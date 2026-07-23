@@ -1,6 +1,8 @@
 .hero {
-  padding: 5rem 0 6rem;
-  background: linear-gradient(180deg, var(--rose-wash) 0%, var(--sand) 100%);
+  padding: 5.5rem 0 6.5rem;
+  background: radial-gradient(circle at 80% 20%, rgba(232, 196, 196, 0.45) 0%, transparent 60%),
+              linear-gradient(180deg, var(--surface-base) 0%, var(--surface-raised) 100%);
+  position: relative;
   overflow: hidden;
 }
 
@@ -14,85 +16,156 @@
 .hero h1 em {
   font-style: italic;
   color: var(--plum);
-  font-variation-settings: "opsz" 144;
+  font-variation-settings: "opsz" 144, "wght" 400;
+  position: relative;
+  display: inline-block;
+}
+
+.hero h1 em::after {
+  content: "";
+  position: absolute;
+  bottom: 0.12em;
+  left: 0;
+  right: 0;
+  height: 0.12em;
+  background: rgba(232, 196, 196, 0.65);
+  border-radius: 4px;
+  z-index: -1;
 }
 
 .hero-lede {
-  max-width: 42ch;
+  max-width: 44ch;
   margin-top: 2rem;
-  font-size: 1.08rem;
+  font-size: 1.12rem;
   color: var(--ink-soft);
+  line-height: 1.65;
 }
 
 .hero-actions {
   display: flex;
-  gap: 0.85rem;
-  margin-top: 2.25rem;
+  gap: 1rem;
+  margin-top: 2.5rem;
   flex-wrap: wrap;
 }
 
 .hero-panel {
-  background: var(--white);
-  border: var(--edge);
-  border-radius: 26px;
-  padding: 2rem;
-  box-shadow: var(--shadow);
+  background: var(--surface-card);
+  border: var(--edge-rose);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.hero-panel:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -15px rgba(92, 58, 74, 0.22);
 }
 
 .reformer-svg {
   width: 100%;
   height: auto;
   display: block;
+  filter: drop-shadow(0 4px 12px rgba(92, 58, 74, 0.08));
 }
 
 .hero-panel-note {
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   color: var(--ink-soft);
-  margin: 1.5rem 0 0;
+  margin: 1.75rem 0 0;
   padding-top: 1.25rem;
   border-top: var(--edge);
+  line-height: 1.6;
 }
 
 .pillars {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
+  gap: 2rem;
+}
+
+.pillars > div {
+  background: var(--surface-card);
+  border: var(--edge);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.pillars > div:hover {
+  transform: translateY(-4px);
+  border-color: var(--rose-deep);
+  box-shadow: var(--shadow-md);
 }
 
 .pillars h3 {
-  margin: 0.75rem 0 0.75rem;
+  margin: 0.85rem 0 0.85rem;
+  color: var(--ink);
+  font-variation-settings: "opsz" 48;
 }
 
 .pillars p {
   color: var(--ink-soft);
-  font-size: 0.95rem;
+  font-size: 0.98rem;
   margin: 0;
+  line-height: 1.65;
 }
 
 .quote-band {
-  background: var(--plum);
+  background: linear-gradient(135deg, var(--plum) 0%, #422834 100%);
   color: var(--rose-wash);
-  padding: 5rem 0;
+  padding: 5.5rem 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.quote-band::before {
+  content: "“";
+  position: absolute;
+  top: -2rem;
+  right: 5%;
+  font-family: var(--f-display);
+  font-size: 24rem;
+  color: rgba(247, 235, 233, 0.04);
+  line-height: 1;
+  pointer-events: none;
 }
 
 .quote-band blockquote {
   font-family: var(--f-display);
-  font-size: clamp(1.5rem, 3.2vw, 2.4rem);
-  line-height: 1.28;
+  font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+  line-height: 1.3;
   margin: 0;
-  max-width: 24ch;
-  font-variation-settings: "opsz" 72;
+  max-width: 28ch;
+  font-variation-settings: "opsz" 96, "wght" 300;
+  position: relative;
+  z-index: 1;
 }
 
 .quote-band cite {
-  display: block;
-  margin-top: 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2rem;
   font-family: var(--f-body);
   font-style: normal;
-  font-size: 0.82rem;
-  letter-spacing: 0.16em;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--rose);
+}
+
+.quote-band cite::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background: var(--rose-deep);
+  border-radius: 2px;
 }
 
 .cta-block {
@@ -100,10 +173,18 @@
   align-items: center;
   justify-content: space-between;
   gap: 2.5rem;
-  background: var(--sand);
-  border-radius: 26px;
-  padding: 3rem;
+  background: linear-gradient(135deg, var(--surface-raised) 0%, var(--surface-sunken) 100%);
+  border: var(--edge-rose);
+  border-radius: var(--radius-xl);
+  padding: 3.5rem;
   flex-wrap: wrap;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-block h2 {
+  font-variation-settings: "opsz" 72;
 }
 
 @media (max-width: 900px) {
@@ -113,9 +194,9 @@
   }
   .pillars {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 1.5rem;
   }
   .cta-block {
-    padding: 2rem;
+    padding: 2.25rem;
   }
 }

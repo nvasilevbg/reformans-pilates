@@ -66,7 +66,7 @@ export default function BookingSystem() {
   }
 
   return (
-    <>
+    <div className="animate-entrance">
       {bookings.length > 0 && (
         <div className="bk-mine">
           <p className="eyebrow" style={{ margin: 0 }}>
@@ -78,7 +78,7 @@ export default function BookingSystem() {
               return (
                 <li key={b.slotId}>
                   <span>
-                    <b>{s.title}</b> — {formatDayLabel(s.date)}, {s.start}
+                    <b>{s?.title ?? "Час"}</b> — {formatDayLabel(s?.date ?? selectedDate)}, {s?.start}
                   </span>
                   <button
                     onClick={() => cancel(b.slotId)}
@@ -89,7 +89,8 @@ export default function BookingSystem() {
                       cursor: "pointer",
                       textDecoration: "underline",
                       fontFamily: "var(--f-body)",
-                      fontSize: "0.85rem",
+                      fontSize: "0.88rem",
+                      fontWeight: 600,
                     }}
                   >
                     Откажи
@@ -101,27 +102,38 @@ export default function BookingSystem() {
         </div>
       )}
 
+      {/* Day strip with micro-visualization load dots */}
       <div className="bk-daystrip">
         {days.map(([date, daySlots]) => {
           const [y, m, d] = date.split("-").map(Number);
           const dow = new Date(y, m - 1, d).getDay();
-          const free = daySlots.reduce((n, s) => n + freeSeats(s), 0);
+          const freeTotal = daySlots.reduce((n, s) => n + freeSeats(s), 0);
+          const capTotal = daySlots.reduce((n, s) => n + s.capacity, 0);
+
+          let loadLevel: "high" | "medium" | "none" = "high";
+          if (freeTotal === 0) loadLevel = "none";
+          else if (freeTotal / capTotal <= 0.4) loadLevel = "medium";
+
           return (
             <button
               key={date}
               className="bk-day"
               data-selected={date === selectedDate}
-              data-none={free === 0}
+              data-none={freeTotal === 0}
               onClick={() => setSelectedDate(date)}
             >
               <div className="bk-day-dow">{WEEKDAYS[dow]}</div>
               <div className="bk-day-num">{d}</div>
-              <div className="bk-day-free">{free === 0 ? "пълно" : `${free} места`}</div>
+              <div className="bk-day-free">
+                <span className="bk-day-dot" data-level={loadLevel} aria-hidden="true" />
+                {freeTotal === 0 ? "пълно" : `${freeTotal} места`}
+              </div>
             </button>
           );
         })}
       </div>
 
+      {/* Filter controls */}
       <div className="bk-filters">
         <span className="eyebrow" style={{ marginRight: "0.4rem" }}>
           Покажи
@@ -143,24 +155,27 @@ export default function BookingSystem() {
             {label}
           </button>
         ))}
-        <span style={{ marginLeft: "auto", fontSize: "0.85rem", color: "var(--ink-soft)" }}>
+        <span style={{ marginLeft: "auto", fontSize: "0.88rem", fontWeight: 500, color: "var(--ink-soft)" }}>
           {formatDayLabel(selectedDate)}
         </span>
       </div>
 
+      {/* Slot cards list */}
       {visible.length === 0 ? (
         <div className="bk-empty">
           Няма часове по този филтър за {formatDayLabel(selectedDate)}. Виж друг ден или
           махни филтъра.
         </div>
       ) : (
-        <div className="bk-list">
+        <div className="bk-list" key={selectedDate}>
           {visible.map((s) => {
             const free = freeSeats(s);
             const status = slotStatus(s);
             const mine = bookings.some((b) => b.slotId === s.id);
+            const slotState = free === 0 ? "full" : free === 1 ? "last" : "available";
+
             return (
-              <div key={s.id} className="bk-slot" data-full={free === 0}>
+              <div key={s.id} className="bk-slot" data-full={free === 0} data-status={slotState}>
                 <div className="bk-time">
                   {s.start}
                   <small>до {s.end}</small>
@@ -170,35 +185,42 @@ export default function BookingSystem() {
                   <div className="bk-title">
                     {s.title}
                     {s.type === "private" && <span className="bk-tag">1:1</span>}
+                    {free === 1 && <span className="bk-alert-badge">Последно 1 място</span>}
                   </div>
                   <div className="bk-meta">
                     {s.instructor} · {s.level}
                   </div>
                 </div>
 
+                {/* Enriched 6-coil reformer occupancy visualization */}
                 <div className="bk-spring">
                   <div className="bk-spring-track" aria-hidden="true">
-                    {Array.from({ length: s.capacity }).map((_, i) => (
-                      <div
-                        key={i}
-                        className="bk-coil"
-                        data-taken={i < s.booked}
-                        style={{ height: i < s.booked ? "22px" : "9px" }}
-                      />
-                    ))}
+                    {Array.from({ length: s.capacity }).map((_, i) => {
+                      const taken = i < s.booked;
+                      const isLastOpen = !taken && free === 1 && i === s.booked;
+                      return (
+                        <div
+                          key={i}
+                          className="bk-coil"
+                          data-taken={taken}
+                          data-last-open={isLastOpen}
+                          title={`Реформър #${i + 1}: ${taken ? "Зает" : "Свободен"}`}
+                        />
+                      );
+                    })}
                   </div>
-                  <div className="bk-spring-label" data-status={status}>
+                  <div className="bk-spring-label" data-status={free === 0 ? "full" : free === 1 ? "last" : "free"}>
                     {s.type === "private" ? (
                       free === 0 ? (
                         <b>Заето</b>
                       ) : (
-                        <b>Свободен слот</b>
+                        <b>Свободен слот (1:1)</b>
                       )
                     ) : free === 0 ? (
                       <b>Пълен клас</b>
                     ) : (
                       <>
-                        <b>{free}</b> от {s.capacity} свободни
+                        <b>{free}</b> от {s.capacity} свободни реформъра
                       </>
                     )}
                   </div>
@@ -215,7 +237,7 @@ export default function BookingSystem() {
                       disabled={free === 0}
                       onClick={() => setActive(s)}
                     >
-                      {free === 0 ? "Няма места" : "Запази"}
+                      {free === 0 ? "Няма места" : "Запази час"}
                     </button>
                   )}
                 </div>
@@ -225,20 +247,25 @@ export default function BookingSystem() {
         </div>
       )}
 
+      {/* Legend */}
       <div className="bk-legend">
         <span>
           <i style={{ background: "var(--rose)" }} />
-          свободно място
+          Свободен реформър
         </span>
         <span>
           <i style={{ background: "var(--plum)" }} />
-          заето място
+          Зает реформър
         </span>
-        <span>Всеки блок = един реформър в залата.</span>
+        <span>
+          <i style={{ background: "var(--accent-warning)" }} />
+          Последно място
+        </span>
+        <span style={{ marginLeft: "auto" }}>Всеки блок = един номериран уред в залата.</span>
       </div>
 
       {active && <BookingModal slot={active} onClose={() => setActive(null)} onConfirm={confirm} />}
-    </>
+    </div>
   );
 }
 
