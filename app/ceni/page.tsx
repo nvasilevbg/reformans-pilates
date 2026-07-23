@@ -32,7 +32,7 @@ const CARDS = [
 
 export default function Ceni() {
   return (
-    <div className="shell">
+    <div className="shell animate-entrance">
       <header className="page-head">
         <p className="eyebrow">Цени</p>
         <h2>Без такса членство и без записване за година</h2>
@@ -47,8 +47,8 @@ export default function Ceni() {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-          gap: "1.25rem",
-          marginBottom: "4rem",
+          gap: "var(--space-4)",
+          marginBottom: "var(--space-16)",
         }}
       >
         {CARDS.map((c) => (
@@ -67,18 +67,20 @@ export default function Ceni() {
             <div
               style={{
                 fontFamily: "var(--f-display)",
-                fontSize: "2.5rem",
-                lineHeight: 1.1,
-                margin: "0.85rem 0 0.2rem",
+                fontSize: "2.4rem",
+                lineHeight: 0.98,
+                letterSpacing: "-0.03em",
+                marginTop: "var(--space-2)",
+                marginBottom: "var(--space-1)",
               }}
             >
               {c.price}
             </div>
             <div
               style={{
-                fontSize: "0.82rem",
-                color: c.featured ? "rgba(247,235,233,0.7)" : "var(--ink-soft)",
-                marginBottom: "1.25rem",
+                fontSize: "0.84rem",
+                color: c.featured ? "rgba(247,235,233,0.75)" : "var(--ink-soft)",
+                marginBottom: "var(--space-4)",
               }}
             >
               {c.unit}
@@ -89,13 +91,13 @@ export default function Ceni() {
                 padding: 0,
                 margin: 0,
                 display: "grid",
-                gap: "0.5rem",
-                fontSize: "0.88rem",
+                gap: "var(--space-2)",
+                fontSize: "0.9rem",
                 color: c.featured ? "rgba(247,235,233,0.85)" : "var(--ink-soft)",
               }}
             >
               {c.lines.map((l) => (
-                <li key={l} style={{ paddingLeft: "0.9rem", position: "relative" }}>
+                <li key={l} style={{ paddingLeft: "var(--space-3)", position: "relative" }}>
                   <span style={{ position: "absolute", left: 0 }}>·</span>
                   {l}
                 </li>
@@ -105,21 +107,19 @@ export default function Ceni() {
         ))}
       </div>
 
-      <hr className="rule" />
-
       <section className="section">
-        <h2 style={{ marginBottom: "2rem" }}>Дребният шрифт, който всъщност има значение</h2>
+        <h2>Дребният шрифт, който всъщност има значение</h2>
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "2.5rem",
+            gap: "var(--space-8)",
             color: "var(--ink-soft)",
             fontSize: "0.95rem",
           }}
         >
           <div>
-            <h3 style={{ color: "var(--ink)", marginBottom: "0.6rem" }}>Отказ на час</h3>
+            <h3>Отказ на час</h3>
             <p>
               До 12 часа преди началото — безплатно. По-късно посещението се
               приспада. Не е наказание, просто мястото вече не може да се даде на
@@ -127,7 +127,7 @@ export default function Ceni() {
             </p>
           </div>
           <div>
-            <h3 style={{ color: "var(--ink)", marginBottom: "0.6rem" }}>Първо посещение</h3>
+            <h3>Първо посещение</h3>
             <p>
               Ела 15 минути по-рано. Показваме уреда, настройваме пружините и
               питаме за травми. Носи чорапи с грайфер — имаме и за продажба, 12
@@ -135,7 +135,7 @@ export default function Ceni() {
             </p>
           </div>
           <div>
-            <h3 style={{ color: "var(--ink)", marginBottom: "0.6rem" }}>Плащане</h3>
+            <h3>Плащане</h3>
             <p>
               Карта, кеш или банков превод. Издаваме фактура при поискване. Не
               работим със спортни ваучери.
@@ -144,7 +144,7 @@ export default function Ceni() {
         </div>
       </section>
 
-      <div style={{ paddingBottom: "2rem" }}>
+      <div style={{ paddingBottom: "var(--space-8)" }}>
         <Link href="/rezervacii" className="btn btn-primary">
           Виж графика
         </Link>
