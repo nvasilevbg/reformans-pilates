@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import {
   Booking,
   MONTHS,
@@ -303,7 +304,16 @@ function BookingModal({
 
   const [y, m, d] = slot.date.split("-").map(Number);
 
-  return (
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
+  if (!mounted) return null;
+
+  return createPortal(
     <div className="bk-overlay" onClick={onClose} role="dialog" aria-modal="true">
       <div className="bk-modal" onClick={(e) => e.stopPropagation()}>
         <p className="eyebrow">Резервация</p>
@@ -377,6 +387,7 @@ function BookingModal({
           от картата.
         </p>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
