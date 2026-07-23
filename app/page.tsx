@@ -15,7 +15,7 @@ export default function Home() {
           <img
             src={heroImage.src}
             alt={heroImage.alt}
-            style={{ objectFit: "cover", objectPosition: "center right" }}
+            style={{ objectFit: "cover", objectPosition: "center center" }}
             fetchPriority="high"
           />
         </div>

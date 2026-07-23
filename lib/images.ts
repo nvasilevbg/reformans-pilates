@@ -11,12 +11,11 @@ export interface StudioImageDef {
 export const STUDIO_IMAGES = {
   // Homepage Hero & Features
   heroStudio: {
-    src: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200&q=80&auto=format",
-    alt: "Интериор на пилатес реформър студио в Лозенец с уреди и естествена светлина",
+    src: "/images/hero.jpg",
+    alt: "Инструктор изпълнява страничен планк на пилатес реформър в студиото",
     width: 1200,
     height: 800,
     aspectRatio: "3/2",
-    credit: "Unsplash / Studio Atmosphere",
   },
   pillarGroup: {
     src: "https://images.unsplash.com/photo-1599447421416-3414500d18a5?w=600&q=80&auto=format",
