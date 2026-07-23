@@ -29,25 +29,28 @@
   display: block;
 }
 
-/* Dual Scrim Overlays for Legibility */
+/* Directional Scrim Overlay (Solid Bottom-Left, Luminous Top-Right) */
 .hero-scrim-top {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 190px;
-  background: linear-gradient(to bottom, rgba(30, 18, 24, 0.75) 0%, transparent 100%);
+  height: 130px;
+  background: linear-gradient(to bottom, rgba(24, 14, 20, 0.55) 0%, transparent 100%);
   z-index: 2;
   pointer-events: none;
 }
 
-.hero-scrim-bottom {
+.hero-scrim-directional {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 75%;
-  background: linear-gradient(to top, rgba(30, 18, 24, 0.88) 0%, rgba(30, 18, 24, 0.5) 55%, transparent 100%);
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 15% 90%,
+    rgba(24, 14, 20, 0.88) 0%,
+    rgba(24, 14, 20, 0.65) 40%,
+    rgba(24, 14, 20, 0.2) 68%,
+    transparent 88%
+  );
   z-index: 2;
   pointer-events: none;
 }
@@ -55,11 +58,14 @@
 .hero-fullscreen-content {
   position: relative;
   z-index: 3;
-  width: 100%;
+  width: min(1180px, 100% - clamp(48px, 8vw, 96px));
+  margin-inline: auto;
+  padding-left: clamp(24px, 4vw, 48px);
+  padding-right: clamp(24px, 4vw, 48px);
 }
 
 .hero-text-wrapper {
-  max-width: 620px;
+  max-width: 600px;
 }
 
 .hero-eyebrow {
@@ -87,6 +93,17 @@
   font-style: italic;
   color: var(--rose-baby);
   font-variation-settings: "opsz" 144, "wght" 400;
+  letter-spacing: -0.04em;
+}
+
+.desktop-break {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .desktop-break {
+    display: none;
+  }
 }
 
 .hero-lede {

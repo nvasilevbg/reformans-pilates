@@ -251,9 +251,9 @@ p {
 }
 
 .nav[data-transparent="true"] .brand span {
-  background: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-  text-shadow: none;
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .nav[data-transparent="true"] .nav-links a {
@@ -320,12 +320,14 @@ p {
 
 .brand span {
   font-family: var(--f-body);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   font-weight: 600;
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-xs);
+  color: var(--ink-soft);
+  background: transparent !important;
+  padding: 0 !important;
+  margin-left: 0.15rem;
 }
 
 .nav-links {

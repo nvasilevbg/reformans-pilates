@@ -10,26 +10,26 @@ export default function Home() {
     <>
       {/* Full-Screen Background Photo Hero (100svh) */}
       <section className="hero-fullscreen">
-        {/* Full-bleed Photo Layer */}
+        {/* Full-bleed Photo Layer (Shifted 68% X to position instructor on right) */}
         <div className="hero-bg">
           <img
             src={heroImage.src}
             alt={heroImage.alt}
-            style={{ objectFit: "cover", objectPosition: "center center" }}
+            style={{ objectFit: "cover", objectPosition: "68% 50%" }}
             fetchPriority="high"
           />
         </div>
 
-        {/* Dual Scrim Overlays (Bottom for text, Top for Nav) */}
+        {/* Directional Scrim Overlays (Solid Bottom-Left for Text, Luminous Top-Right for Studio) */}
         <div className="hero-scrim-top" />
-        <div className="hero-scrim-bottom" />
+        <div className="hero-scrim-directional" />
 
-        {/* Hero Content Aligned Bottom-Left */}
-        <div className="shell hero-fullscreen-content">
+        {/* Hero Content Aligned Bottom-Left within Shell Container */}
+        <div className="hero-fullscreen-content">
           <div className="animate-entrance hero-text-wrapper">
             <p className="hero-eyebrow">Лозенец · София</p>
             <h1 className="hero-title">
-              Шест реформъра. <br />
+              Шест реформъра. <br className="desktop-break" />
               <em className="hero-accent">Нито един</em> излишен.
             </h1>
             <p className="hero-lede">
