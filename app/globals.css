@@ -301,7 +301,8 @@ p {
     transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .nav-links[data-open="true"] {
-    max-height: 450px;
+    max-height: calc(100dvh - 76px);
+    overflow-y: auto;
   }
   .nav-links a {
     padding: 1.1rem 1.5rem;
@@ -312,6 +313,18 @@ p {
   }
   .nav-cta {
     display: none;
+  }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+  .nav-inner {
+    height: 52px;
+  }
+  .nav-links {
+    top: 52px;
+  }
+  .nav-links[data-open="true"] {
+    max-height: calc(100dvh - 52px);
   }
 }
 

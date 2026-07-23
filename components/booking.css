@@ -410,9 +410,9 @@
 .bk-modal {
   background: var(--surface-card);
   border-radius: var(--radius-xl);
-  padding: 2.5rem;
+  padding: 2.25rem;
   width: min(540px, 100%);
-  max-height: 90vh;
+  max-height: calc(100dvh - 2.5rem);
   overflow-y: auto;
   box-shadow: var(--shadow-lg);
   border: var(--edge-rose);
@@ -491,11 +491,10 @@
   to { opacity: 1; }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .bk-slot {
-    grid-template-columns: 85px 1fr;
-    gap: 0.85rem 1.25rem;
-    row-gap: 1.15rem;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
     padding: 1.25rem;
   }
   .bk-spring {
@@ -507,5 +506,9 @@
   .bk-action .btn {
     width: 100%;
     justify-content: center;
+  }
+  .bk-modal {
+    padding: 1.5rem 1.25rem;
+    border-radius: var(--radius-lg);
   }
 }
