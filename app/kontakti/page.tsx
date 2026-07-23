@@ -8,10 +8,10 @@ export default function Kontakti() {
     <div className="shell page-container animate-entrance">
       <header className="page-head">
         <p className="eyebrow">Контакти</p>
-        <h2>ул. Кричим 42, Лозенец</h2>
+        <h2>Студио Реформанс — ул. „Кричим“ 42, кв. Лозенец</h2>
         <p>
-          Партер, вход от вътрешния двор — вратата с розовата рамка. Паркиране в
-          синя зона; след 18:00 обикновено се намира място на Червена стена.
+          Партерен етаж, с удобен вход от вътрешния двор. Улицата попада в Синя зона
+          за паркиране; в близост има и възможност за паркиране по съседните улици.
         </p>
       </header>
 
@@ -37,20 +37,19 @@ export default function Kontakti() {
               style={{ borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-sm)" }}
             />
             <p style={{ fontSize: "0.85rem", color: "var(--ink-soft)", margin: "var(--space-2) 0 0" }}>
-              Влиза се през железната врата към двора, партер отляво.
+              Влиза се през вратата към двора, партерен етаж отляво.
             </p>
           </div>
 
           <div className="card" style={{ marginBottom: "var(--space-4)" }}>
-            <p className="eyebrow">Директно</p>
+            <p className="eyebrow">Директен контакт</p>
             <div style={{ display: "grid", gap: "var(--space-2)", marginTop: "var(--space-2)", fontSize: "1.02rem" }}>
               <a href="tel:+35928001420">02 800 1420</a>
               <a href="tel:+359888104220">0888 104 220 (Viber, WhatsApp)</a>
               <a href="mailto:zdravei@pilatesreformer.bg">zdravei@pilatesreformer.bg</a>
             </div>
             <p style={{ fontSize: "0.85rem", color: "var(--ink-soft)", margin: "var(--space-3) 0 0" }}>
-              Отговаряме между часовете, обикновено до два часа. Ако бързаш —
-              пиши на Viber.
+              Отговаряме между часовете, обикновено в рамките на 2 часа. За спешни въпроси ни пишете по Viber.
             </p>
           </div>
 
@@ -87,8 +86,7 @@ export default function Kontakti() {
               </tbody>
             </table>
             <p style={{ fontSize: "0.85rem", color: "var(--ink-soft)", margin: "var(--space-3) 0 0" }}>
-              Рецепцията не е постоянно заета — ако идваш само за да разгледаш,
-              обади се предварително.
+              За посещение за разглеждане на залата, моля да се свържете с нас предварително.
             </p>
           </div>
 
