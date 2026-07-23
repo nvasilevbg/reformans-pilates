@@ -4,7 +4,7 @@ export const metadata = { title: "Галерия — Пилатес Реформ
 
 export default function Galeriya() {
   return (
-    <div className="shell animate-entrance">
+    <div className="shell page-container animate-entrance">
       <header className="page-head">
         <p className="eyebrow">Галерия</p>
         <h2>Залата, без филтри и без наети модели</h2>

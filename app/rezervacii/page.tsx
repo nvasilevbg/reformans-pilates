@@ -4,7 +4,7 @@ export const metadata = { title: "Резервации — Пилатес Реф
 
 export default function Rezervacii() {
   return (
-    <div className="shell">
+    <div className="shell page-container animate-entrance">
       <header className="page-head">
         <p className="eyebrow">График · две седмици напред</p>
         <h2>Избери ден, после час</h2>
@@ -15,7 +15,7 @@ export default function Rezervacii() {
         </p>
       </header>
       <BookingSystem />
-      <div style={{ height: "2rem" }} />
+      <div style={{ height: "var(--space-8)" }} />
     </div>
   );
 }

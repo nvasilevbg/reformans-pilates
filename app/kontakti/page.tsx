@@ -5,7 +5,7 @@ export const metadata = { title: "Контакти — Пилатес Рефор
 
 export default function Kontakti() {
   return (
-    <div className="shell animate-entrance">
+    <div className="shell page-container animate-entrance">
       <header className="page-head">
         <p className="eyebrow">Контакти</p>
         <h2>ул. Кричим 42, Лозенец</h2>
@@ -19,15 +19,15 @@ export default function Kontakti() {
         style={{
           display: "grid",
           gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.15fr)",
-          gap: "3rem",
-          paddingBottom: "3rem",
+          gap: "var(--space-8)",
+          paddingBottom: "var(--space-12)",
         }}
         className="kontakti-grid"
       >
         <div>
           {/* Building entrance photo */}
-          <div className="card" style={{ marginBottom: "1.25rem", padding: "1.25rem" }}>
-            <p className="eyebrow" style={{ marginBottom: "0.75rem" }}>
+          <div className="card" style={{ marginBottom: "var(--space-4)", padding: "var(--space-4)" }}>
+            <p className="eyebrow" style={{ marginBottom: "var(--space-2)" }}>
               Вход на сградата
             </p>
             <StudioImage
@@ -36,31 +36,31 @@ export default function Kontakti() {
               sizes="(max-width: 860px) 100vw, 40vw"
               style={{ borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-sm)" }}
             />
-            <p style={{ fontSize: "0.85rem", color: "var(--ink-soft)", margin: "0.85rem 0 0" }}>
+            <p style={{ fontSize: "0.85rem", color: "var(--ink-soft)", margin: "var(--space-2) 0 0" }}>
               Влиза се през железната врата към двора, партер отляво.
             </p>
           </div>
 
-          <div className="card" style={{ marginBottom: "1.25rem" }}>
+          <div className="card" style={{ marginBottom: "var(--space-4)" }}>
             <p className="eyebrow">Директно</p>
-            <div style={{ display: "grid", gap: "0.7rem", marginTop: "1rem", fontSize: "1.02rem" }}>
+            <div style={{ display: "grid", gap: "var(--space-2)", marginTop: "var(--space-2)", fontSize: "1.02rem" }}>
               <a href="tel:+35928001420">02 800 1420</a>
               <a href="tel:+359888104220">0888 104 220 (Viber, WhatsApp)</a>
               <a href="mailto:zdravei@pilatesreformer.bg">zdravei@pilatesreformer.bg</a>
             </div>
-            <p style={{ fontSize: "0.85rem", color: "var(--ink-soft)", margin: "1.25rem 0 0" }}>
+            <p style={{ fontSize: "0.85rem", color: "var(--ink-soft)", margin: "var(--space-3) 0 0" }}>
               Отговаряме между часовете, обикновено до два часа. Ако бързаш —
               пиши на Viber.
             </p>
           </div>
 
-          <div className="card" style={{ marginBottom: "1.25rem" }}>
+          <div className="card" style={{ marginBottom: "var(--space-4)" }}>
             <p className="eyebrow">Работно време</p>
             <table
               style={{
                 width: "100%",
                 borderCollapse: "collapse",
-                marginTop: "1rem",
+                marginTop: "var(--space-2)",
                 fontSize: "0.92rem",
               }}
             >
@@ -71,10 +71,10 @@ export default function Kontakti() {
                   ["Неделя", "09:00 – 13:00"],
                 ].map(([d, h]) => (
                   <tr key={d}>
-                    <td style={{ padding: "0.55rem 0", borderBottom: "var(--edge)" }}>{d}</td>
+                    <td style={{ padding: "var(--space-2) 0", borderBottom: "var(--edge)" }}>{d}</td>
                     <td
                       style={{
-                        padding: "0.55rem 0",
+                        padding: "var(--space-2) 0",
                         borderBottom: "var(--edge)",
                         textAlign: "right",
                         color: "var(--ink-soft)",
@@ -86,7 +86,7 @@ export default function Kontakti() {
                 ))}
               </tbody>
             </table>
-            <p style={{ fontSize: "0.85rem", color: "var(--ink-soft)", margin: "1.25rem 0 0" }}>
+            <p style={{ fontSize: "0.85rem", color: "var(--ink-soft)", margin: "var(--space-3) 0 0" }}>
               Рецепцията не е постоянно заета — ако идваш само за да разгледаш,
               обади се предварително.
             </p>

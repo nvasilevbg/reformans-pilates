@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const LINKS = [
   { href: "/rezervacii", label: "Резервации" },
@@ -16,9 +16,43 @@ const LINKS = [
 export default function Nav() {
   const path = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const isHome = path === "/";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 60) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
-    <nav className="nav">
+    <nav
+      className="nav"
+      data-transparent={isHome}
+      data-scrolled={scrolled}
+    >
       <div className="shell nav-inner">
         <Link href="/" className="brand" onClick={() => setOpen(false)}>
           Пилатес Реформър <span>Лозенец</span>
@@ -47,7 +81,11 @@ export default function Nav() {
           aria-expanded={open}
           aria-label="Меню"
         >
-          {open ? "Затвори" : "Меню"}
+          <div className="hamburger" data-open={open}>
+            <span />
+            <span />
+            <span />
+          </div>
         </button>
       </div>
     </nav>

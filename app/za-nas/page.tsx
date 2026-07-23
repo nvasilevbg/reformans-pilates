@@ -5,7 +5,7 @@ export const metadata = { title: "За нас — Пилатес Реформъ�
 
 export default function ZaNas() {
   return (
-    <div className="shell animate-entrance">
+    <div className="shell page-container animate-entrance">
       <header className="page-head">
         <p className="eyebrow">За студиото</p>
         <h2>Отворихме, защото Мира не намери зала, в която да се възстанови</h2>
@@ -17,7 +17,7 @@ export default function ZaNas() {
       </header>
 
       {/* Studio atmosphere photo */}
-      <div style={{ marginBottom: "3.5rem" }}>
+      <div style={{ marginBottom: "var(--space-12)" }}>
         <StudioImage
           imageKey="aboutDetail"
           aspectRatio="16/9"
@@ -25,7 +25,7 @@ export default function ZaNas() {
           style={{
             borderRadius: "var(--radius-xl)",
             boxShadow: "var(--shadow-md)",
-            border: "var(--edge-rose)",
+            border: "var(--edge)",
           }}
         />
       </div>
@@ -34,12 +34,12 @@ export default function ZaNas() {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-          gap: "2.5rem",
-          paddingBottom: "3rem",
+          gap: "var(--space-8)",
+          paddingBottom: "var(--space-12)",
         }}
       >
         <div>
-          <h3 style={{ marginBottom: "0.75rem" }}>Защо шест уреда</h3>
+          <h3>Защо шест уреда</h3>
           <p style={{ color: "var(--ink-soft)", lineHeight: "1.65" }}>
             Защото толкова души един инструктор може да наблюдава едновременно,
             без да превърне часа в аеробика. Пробвахме с осем през 2018-та.
@@ -47,7 +47,7 @@ export default function ZaNas() {
           </p>
         </div>
         <div>
-          <h3 style={{ marginBottom: "0.75rem" }}>Какво няма тук</h3>
+          <h3>Какво няма тук</h3>
           <p style={{ color: "var(--ink-soft)", lineHeight: "1.65" }}>
             Огледални стени, музика над 70 децибела, класации, снимки в час,
             договори за година. Ако търсиш енергия и високо темпо, има по-добри
@@ -55,7 +55,7 @@ export default function ZaNas() {
           </p>
         </div>
         <div>
-          <h3 style={{ marginBottom: "0.75rem" }}>Кой идва при нас</h3>
+          <h3>Кой идва при нас</h3>
           <p style={{ color: "var(--ink-soft)", lineHeight: "1.65" }}>
             Средната възраст е 38. Половината идват заради гръб или врат от
             седяща работа. Една четвърт са след раждане. Останалите просто са
@@ -64,17 +64,15 @@ export default function ZaNas() {
         </div>
       </div>
 
-      <hr className="rule" />
-
       <section className="section">
         <h2>Първото ти посещение, стъпка по стъпка</h2>
         <ol
           style={{
             listStyle: "none",
             padding: 0,
-            margin: "2.5rem 0 0",
+            margin: "var(--space-8) 0 0",
             display: "grid",
-            gap: "0",
+            gap: 0,
             counterReset: "step",
           }}
         >
@@ -90,8 +88,8 @@ export default function ZaNas() {
               style={{
                 display: "grid",
                 gridTemplateColumns: "70px 1fr",
-                gap: "1.5rem",
-                padding: "1.75rem 0",
+                gap: "var(--space-6)",
+                padding: "var(--space-6) 0",
                 borderTop: "var(--edge)",
               }}
             >
@@ -99,13 +97,13 @@ export default function ZaNas() {
                 style={{
                   fontFamily: "var(--f-display)",
                   fontSize: "1.8rem",
-                  color: "var(--rose-deep)",
+                  color: "var(--plum-dark)",
                 }}
               >
-                {i + 1}
+                0{i + 1}
               </span>
               <div>
-                <h3 style={{ fontSize: "1.15rem", marginBottom: "0.4rem" }}>{title}</h3>
+                <h3 style={{ fontSize: "1.15rem", marginTop: 0, marginBottom: "var(--space-1)" }}>{title}</h3>
                 <p style={{ color: "var(--ink-soft)", margin: 0 }}>{body}</p>
               </div>
             </li>
@@ -113,7 +111,7 @@ export default function ZaNas() {
         </ol>
       </section>
 
-      <div style={{ paddingBottom: "2rem" }}>
+      <div style={{ paddingBottom: "var(--space-8)" }}>
         <Link href="/rezervacii" className="btn btn-primary">
           Запази първия си час
         </Link>
