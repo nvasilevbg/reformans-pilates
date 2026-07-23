@@ -32,7 +32,7 @@ const CARDS = [
 
 export default function Ceni() {
   return (
-    <div className="shell animate-entrance">
+    <div className="shell page-container animate-entrance">
       <header className="page-head">
         <p className="eyebrow">Цени</p>
         <h2>Без такса членство и без записване за година</h2>
@@ -47,8 +47,9 @@ export default function Ceni() {
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-          gap: "var(--space-4)",
+          gap: "var(--space-6)",
           marginBottom: "var(--space-16)",
+          alignItems: "stretch",
         }}
       >
         {CARDS.map((c) => (
@@ -57,11 +58,37 @@ export default function Ceni() {
             className="card"
             style={
               c.featured
-                ? { background: "var(--plum)", color: "var(--rose-wash)", borderColor: "var(--plum)" }
+                ? {
+                    background: "var(--rose-wash)",
+                    border: "2px solid var(--rose-soft)",
+                    boxShadow: "var(--shadow-md)",
+                    position: "relative",
+                  }
                 : undefined
             }
           >
-            <p className="eyebrow" style={c.featured ? { color: "var(--rose)" } : undefined}>
+            {c.featured && (
+              <span
+                style={{
+                  position: "absolute",
+                  top: "-12px",
+                  right: "var(--space-4)",
+                  background: "var(--rose-baby)",
+                  color: "var(--plum-dark)",
+                  fontSize: "0.72rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  padding: "var(--space-1) var(--space-3)",
+                  borderRadius: "var(--radius-full)",
+                  border: "1px solid var(--rose-soft)",
+                  boxShadow: "var(--shadow-sm)",
+                }}
+              >
+                Най-популярен
+              </span>
+            )}
+            <p className="eyebrow" style={{ color: c.featured ? "var(--plum-dark)" : undefined }}>
               {c.name}
             </p>
             <div
@@ -72,6 +99,7 @@ export default function Ceni() {
                 letterSpacing: "-0.03em",
                 marginTop: "var(--space-2)",
                 marginBottom: "var(--space-1)",
+                color: "var(--plum-dark)",
               }}
             >
               {c.price}
@@ -79,7 +107,7 @@ export default function Ceni() {
             <div
               style={{
                 fontSize: "0.84rem",
-                color: c.featured ? "rgba(247,235,233,0.75)" : "var(--ink-soft)",
+                color: "var(--ink-soft)",
                 marginBottom: "var(--space-4)",
               }}
             >
@@ -93,12 +121,12 @@ export default function Ceni() {
                 display: "grid",
                 gap: "var(--space-2)",
                 fontSize: "0.9rem",
-                color: c.featured ? "rgba(247,235,233,0.85)" : "var(--ink-soft)",
+                color: "var(--ink)",
               }}
             >
               {c.lines.map((l) => (
                 <li key={l} style={{ paddingLeft: "var(--space-3)", position: "relative" }}>
-                  <span style={{ position: "absolute", left: 0 }}>·</span>
+                  <span style={{ position: "absolute", left: 0, color: "var(--rose-soft)", fontWeight: "bold" }}>✓</span>
                   {l}
                 </li>
               ))}

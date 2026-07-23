@@ -288,3 +288,48 @@
     width: 100%;
   }
 }
+
+/* Home Studio Atmosphere & Team Preview Grids */
+.home-studio-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-8);
+  align-items: center;
+  background: var(--surface-card);
+  border: var(--edge);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+}
+
+.team-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.team-card {
+  padding: var(--space-6);
+  background: var(--surface-card);
+  border: var(--edge);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform 160ms cubic-bezier(0, 0, 0.2, 1), box-shadow 160ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.team-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 860px) {
+  .home-studio-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    padding: var(--space-6);
+  }
+  .team-preview-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
