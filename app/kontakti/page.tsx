@@ -1,10 +1,11 @@
 import ContactForm from "@/components/ContactForm";
+import StudioImage from "@/components/StudioImage";
 
 export const metadata = { title: "Контакти — Пилатес Реформър" };
 
 export default function Kontakti() {
   return (
-    <div className="shell">
+    <div className="shell animate-entrance">
       <header className="page-head">
         <p className="eyebrow">Контакти</p>
         <h2>ул. Кричим 42, Лозенец</h2>
@@ -24,6 +25,22 @@ export default function Kontakti() {
         className="kontakti-grid"
       >
         <div>
+          {/* Building entrance photo */}
+          <div className="card" style={{ marginBottom: "1.25rem", padding: "1.25rem" }}>
+            <p className="eyebrow" style={{ marginBottom: "0.75rem" }}>
+              Вход на сградата
+            </p>
+            <StudioImage
+              imageKey="contactBuilding"
+              aspectRatio="4/3"
+              sizes="(max-width: 860px) 100vw, 40vw"
+              style={{ borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-sm)" }}
+            />
+            <p style={{ fontSize: "0.85rem", color: "var(--ink-soft)", margin: "0.85rem 0 0" }}>
+              Влиза се през железната врата към двора, партер отляво.
+            </p>
+          </div>
+
           <div className="card" style={{ marginBottom: "1.25rem" }}>
             <p className="eyebrow">Директно</p>
             <div style={{ display: "grid", gap: "0.7rem", marginTop: "1rem", fontSize: "1.02rem" }}>
@@ -37,7 +54,7 @@ export default function Kontakti() {
             </p>
           </div>
 
-          <div className="card">
+          <div className="card" style={{ marginBottom: "1.25rem" }}>
             <p className="eyebrow">Работно време</p>
             <table
               style={{
@@ -77,11 +94,11 @@ export default function Kontakti() {
 
           <div
             style={{
-              marginTop: "1.25rem",
-              borderRadius: "20px",
+              borderRadius: "var(--radius-lg)",
               overflow: "hidden",
               border: "var(--edge)",
               height: "260px",
+              boxShadow: "var(--shadow-sm)",
             }}
           >
             <iframe

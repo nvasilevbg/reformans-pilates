@@ -1,13 +1,15 @@
 import Link from "next/link";
+import StudioImage from "@/components/StudioImage";
 import "./home.css";
 
 export default function Home() {
   return (
     <>
+      {/* Hero Section with Split Layout & Studio Real Photo */}
       <section className="hero">
         <div className="shell hero-inner">
-          <div>
-            <p className="eyebrow">Реформър студио · ул. Кричим 42, Лозенец</p>
+          <div className="animate-entrance">
+            <p className="eyebrow">Пилатес реформър студио · ул. Кричим 42, Лозенец</p>
             <h1>
               Шест
               <br />
@@ -32,8 +34,14 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hero-panel">
-            <ReformerDiagram />
+          <div className="hero-panel animate-entrance" style={{ animationDelay: "0.15s" }}>
+            <StudioImage
+              imageKey="heroStudio"
+              priority
+              aspectRatio="3/2"
+              sizes="(max-width: 900px) 100vw, 45vw"
+              style={{ borderRadius: "var(--radius-lg)", boxShadow: "var(--shadow-md)" }}
+            />
             <p className="hero-panel-note">
               Всеки реформър в залата е номериран. Като резервираш, виждаш точно
               колко от шестте са свободни за този час.
@@ -42,11 +50,14 @@ export default function Home() {
         </div>
       </section>
 
-      <hr className="rule" />
-
       <section className="section shell">
         <div className="pillars">
-          <div>
+          <div className="animate-entrance" style={{ animationDelay: "0.1s" }}>
+            <StudioImage
+              imageKey="pillarGroup"
+              aspectRatio="16/10"
+              style={{ borderRadius: "var(--radius-md)", marginBottom: "1.25rem" }}
+            />
             <p className="eyebrow">Групови часове</p>
             <h3>Максимум шест</h3>
             <p>
@@ -55,7 +66,12 @@ export default function Home() {
               ти пасва.
             </p>
           </div>
-          <div>
+          <div className="animate-entrance" style={{ animationDelay: "0.2s" }}>
+            <StudioImage
+              imageKey="pillarPrivate"
+              aspectRatio="16/10"
+              style={{ borderRadius: "var(--radius-md)", marginBottom: "1.25rem" }}
+            />
             <p className="eyebrow">Индивидуално</p>
             <h3>Един на един</h3>
             <p>
@@ -63,7 +79,12 @@ export default function Home() {
               оценка на движение — без пружини, само наблюдение и разговор.
             </p>
           </div>
-          <div>
+          <div className="animate-entrance" style={{ animationDelay: "0.3s" }}>
+            <StudioImage
+              imageKey="pillarRehab"
+              aspectRatio="16/10"
+              style={{ borderRadius: "var(--radius-md)", marginBottom: "1.25rem" }}
+            />
             <p className="eyebrow">Рехабилитация</p>
             <h3>Със свидетелство</h3>
             <p>
@@ -85,7 +106,7 @@ export default function Home() {
       </section>
 
       <section className="section shell">
-        <div className="cta-block">
+        <div className="cta-block animate-entrance">
           <div>
             <h2>Графикът се обновява всяка неделя вечер</h2>
             <p style={{ color: "var(--ink-soft)", maxWidth: "48ch", marginTop: "1rem" }}>
@@ -99,34 +120,5 @@ export default function Home() {
         </div>
       </section>
     </>
-  );
-}
-
-function ReformerDiagram() {
-  return (
-    <svg viewBox="0 0 420 250" className="reformer-svg" role="img" aria-label="Схема на реформър">
-      <rect x="20" y="95" width="380" height="12" rx="6" fill="var(--rose-deep)" />
-      <rect x="20" y="150" width="380" height="12" rx="6" fill="var(--rose-deep)" />
-      <rect x="14" y="78" width="14" height="100" rx="5" fill="var(--plum)" />
-      <rect x="392" y="78" width="14" height="100" rx="5" fill="var(--plum)" />
-      <rect x="140" y="82" width="170" height="88" rx="10" fill="var(--plum)" />
-      <rect x="150" y="92" width="150" height="68" rx="6" fill="var(--rose)" />
-      <rect x="316" y="70" width="10" height="112" rx="5" fill="var(--ink)" />
-      {[0, 1, 2, 3].map((i) => (
-        <path
-          key={i}
-          d={`M46 ${100 + i * 16} q8 -7 16 0 q8 7 16 0 q8 -7 16 0 q8 7 16 0 q8 -7 16 0`}
-          stroke={i < 2 ? "var(--plum)" : "var(--rose-deep)"}
-          strokeWidth="3"
-          fill="none"
-          strokeLinecap="round"
-        />
-      ))}
-      <circle cx="356" cy="96" r="9" fill="none" stroke="var(--ink)" strokeWidth="3" />
-      <circle cx="356" cy="156" r="9" fill="none" stroke="var(--ink)" strokeWidth="3" />
-      <text x="20" y="215" fontFamily="var(--f-body)" fontSize="11" fill="var(--ink-soft)" letterSpacing="2">
-        КАРЕТКА · ПРУЖИНИ · ФУТБАР · РЕМЪЦИ
-      </text>
-    </svg>
   );
 }
