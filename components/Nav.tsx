@@ -21,7 +21,7 @@ export default function Nav() {
     <nav className="nav">
       <div className="shell nav-inner">
         <Link href="/" className="brand" onClick={() => setOpen(false)}>
-          Реформанс <span>Лозенец</span>
+          Пилатес Реформър <span>Лозенец</span>
         </Link>
 
         <div className="nav-links" data-open={open}>

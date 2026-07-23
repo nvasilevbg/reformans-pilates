@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const metadata = { title: "Цени — Реформанс" };
+export const metadata = { title: "Цени — Пилатес Реформър" };
 
 const CARDS = [
   {

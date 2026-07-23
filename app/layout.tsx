@@ -4,7 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Реформанс — Пилатес Реформър студио, София",
+  title: "Пилатес Реформър — Студио в София, Лозенец",
   description:
     "Малко реформър студио в Лозенец. Шест реформъра, групови и индивидуални часове, резервация по дни.",
 };

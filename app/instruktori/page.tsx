@@ -1,4 +1,4 @@
-export const metadata = { title: "Инструктори — Реформанс" };
+export const metadata = { title: "Инструктори — Пилатес Реформър" };
 
 const TEAM = [
   {

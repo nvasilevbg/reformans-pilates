@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const metadata = { title: "За нас — Реформанс" };
+export const metadata = { title: "За нас — Пилатес Реформър" };
 
 export default function ZaNas() {
   return (

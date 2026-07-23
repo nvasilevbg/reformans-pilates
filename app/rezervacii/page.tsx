@@ -1,6 +1,6 @@
 import BookingSystem from "@/components/Booking";
 
-export const metadata = { title: "Резервации — Реформанс" };
+export const metadata = { title: "Резервации — Пилатес Реформър" };
 
 export default function Rezervacii() {
   return (

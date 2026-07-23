@@ -1,4 +1,4 @@
-export const metadata = { title: "Галерия — Реформанс" };
+export const metadata = { title: "Галерия — Пилатес Реформър" };
 
 const SHOTS = [
   { caption: "Залата в 7:20, преди първия час", tall: true, tone: "var(--rose)" },

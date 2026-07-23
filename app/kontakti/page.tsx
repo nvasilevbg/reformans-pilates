@@ -1,6 +1,6 @@
 import ContactForm from "@/components/ContactForm";
 
-export const metadata = { title: "Контакти — Реформанс" };
+export const metadata = { title: "Контакти — Пилатес Реформър" };
 
 export default function Kontakti() {
   return (
@@ -29,7 +29,7 @@ export default function Kontakti() {
             <div style={{ display: "grid", gap: "0.7rem", marginTop: "1rem", fontSize: "1.02rem" }}>
               <a href="tel:+35928001420">02 800 1420</a>
               <a href="tel:+359888104220">0888 104 220 (Viber, WhatsApp)</a>
-              <a href="mailto:zdravei@reformans.bg">zdravei@reformans.bg</a>
+              <a href="mailto:zdravei@pilatesreformer.bg">zdravei@pilatesreformer.bg</a>
             </div>
             <p style={{ fontSize: "0.85rem", color: "var(--ink-soft)", margin: "1.25rem 0 0" }}>
               Отговаряме между часовете, обикновено до два часа. Ако бързаш —
