@@ -57,10 +57,7 @@ export default function Nav() {
     >
       <div className="shell nav-inner">
         <div onClick={() => setOpen(false)}>
-          <Logo
-            color={isTransparent ? "#ffffff" : "var(--plum-dark)"}
-            subColor={isTransparent ? "rgba(255,255,255,0.8)" : "var(--ink-soft)"}
-          />
+          <Logo />
         </div>
 
         <div className="nav-links" data-open={open}>

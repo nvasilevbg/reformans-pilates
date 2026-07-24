@@ -43,13 +43,6 @@
   transform: translateY(0);
 }
 
-.bk-day[data-selected="true"] {
-  background: var(--plum);
-  border-color: var(--plum);
-  color: var(--surface-card);
-  box-shadow: var(--shadow-md);
-}
-
 .bk-day-dow {
   font-size: 0.72rem;
   letter-spacing: 0.16em;
@@ -58,15 +51,12 @@
   font-weight: 600;
 }
 
-.bk-day[data-selected="true"] .bk-day-dow {
-  color: var(--rose);
-}
-
 .bk-day-num {
   font-family: var(--f-display);
   font-size: 1.65rem;
   line-height: 1.05;
   margin-top: var(--space-1);
+  color: var(--ink);
   font-variation-settings: "opsz" 48, "wght" 500;
 }
 
@@ -81,8 +71,23 @@
   gap: var(--space-1);
 }
 
+.bk-day[data-selected="true"] {
+  background: var(--rose-wash);
+  border-color: var(--plum-dark);
+  color: var(--ink);
+  box-shadow: var(--shadow-md), 0 0 0 1px var(--plum-dark);
+}
+
+.bk-day[data-selected="true"] .bk-day-dow {
+  color: var(--plum-dark);
+}
+
+.bk-day[data-selected="true"] .bk-day-num {
+  color: var(--ink);
+}
+
 .bk-day[data-selected="true"] .bk-day-free {
-  color: rgba(247, 235, 233, 0.85);
+  color: var(--ink-soft);
 }
 
 /* Micro-visualization Load Dots in Day Strip */
