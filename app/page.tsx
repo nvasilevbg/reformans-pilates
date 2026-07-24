@@ -2,7 +2,7 @@ import Link from "next/link";
 import StudioImage from "@/components/StudioImage";
 import FAQSection from "@/components/FAQSection";
 import Testimonials from "@/components/Testimonials";
-import { SparklesIcon } from "@/components/Icons";
+import { SparklesIcon, CheckIcon, StarIcon } from "@/components/Icons";
 import { STUDIO_IMAGES } from "@/lib/images";
 import "./home.css";
 
@@ -108,44 +108,53 @@ export default function Home() {
 
         <div className="pillars">
           <div className="animate-entrance" style={{ animationDelay: "0.1s" }}>
-            <StudioImage
-              imageKey="pillarGroup"
-              aspectRatio="16/10"
-              style={{ borderRadius: "var(--radius-md)", marginBottom: "var(--space-4)" }}
-            />
-            <p className="eyebrow">1. Облекчение & Стойка</p>
-            <h3>Забрави за болките в кръста</h3>
+            <div className="pillar-image-wrapper">
+              <StudioImage
+                imageKey="pillarGroup"
+                aspectRatio="16/10"
+              />
+            </div>
+            <span className="pillar-badge">
+              <SparklesIcon size={14} color="var(--plum-dark)" /> Изваян корем & Стойка
+            </span>
+            <h3>Стегната мускулатура и изправена стойка</h3>
             <p>
-              Специализирани упражнения с пружинно съпротивление, които облекчават притискането
-              на гръбначния стълб и укрепват дълбоките коремни мускули.
+              Специализирани реформър упражнения, които стягат коремния корсет, оформят бедрата
+              и освобождават напрежението в гръбнака от първия час.
             </p>
           </div>
 
           <div className="animate-entrance" style={{ animationDelay: "0.2s" }}>
-            <StudioImage
-              imageKey="pillarPrivate"
-              aspectRatio="16/10"
-              style={{ borderRadius: "var(--radius-md)", marginBottom: "var(--space-4)" }}
-            />
-            <p className="eyebrow">2. Персонален контрол</p>
-            <h3>Гарантирано внимание (до 6 души)</h3>
+            <div className="pillar-image-wrapper">
+              <StudioImage
+                imageKey="pillarPrivate"
+                aspectRatio="16/10"
+              />
+            </div>
+            <span className="pillar-badge">
+              <CheckIcon size={14} color="var(--plum-dark)" /> Максимум 6 души
+            </span>
+            <h3>Персонално внимание във всяко движение</h3>
             <p>
-              Инструкторът е до теб през целите 50 минути. Коригира стойката ти в реално време,
-              за да тренираш безопасно и с пълна ефективност.
+              Без масови класове от 15-20 души. При нас залата разполага с точно 6 уреда,
+              за да може инструкторът да следи и коригира стойката ти в реално време.
             </p>
           </div>
 
           <div className="animate-entrance" style={{ animationDelay: "0.3s" }}>
-            <StudioImage
-              imageKey="pillarRehab"
-              aspectRatio="16/10"
-              style={{ borderRadius: "var(--radius-md)", marginBottom: "var(--space-4)" }}
-            />
-            <p className="eyebrow">3. Кинезитерапия</p>
-            <h3>Резултати без риск от травми</h3>
+            <div className="pillar-image-wrapper">
+              <StudioImage
+                imageKey="pillarRehab"
+                aspectRatio="16/10"
+              />
+            </div>
+            <span className="pillar-badge">
+              <StarIcon size={14} color="var(--plum-dark)" /> Кинезитерапия
+            </span>
+            <h3>Безопасност и грижа от кинезитерапевт</h3>
             <p>
-              Инструкторите ни са с магистърска степен по кинезитерапия. Изграждаме стягане,
-              гъвкавост и тонус без агресивно натоварване на ставите.
+              Основателите и инструкторите ни са с магистърска степен по кинезитерапия.
+              Изграждаме тонус и гъвкавост без агресивно натоварване или риск от травми.
             </p>
           </div>
         </div>
