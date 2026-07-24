@@ -12,7 +12,7 @@ export default function Footer() {
               Реформанс <span style={{ color: "var(--ink-soft)" }}>Лозенец</span>
             </Link>
             <p style={{ maxWidth: "34ch", color: "var(--ink-soft)", marginTop: "var(--space-3)", lineHeight: 1.6, fontSize: "0.92rem" }}>
-              Бутиково студио за пилатес реформър в София, кв. Лозенец. Групи до 6 души за прецизна кинезитерапевтична грижа.
+              Бутиково студио за пилатес реформър в София, кв. Лозенец. Групи до 6 души за прецизна персонална грижа.
             </p>
 
             {/* Social Links */}
