@@ -187,8 +187,8 @@
   background: var(--rose-wash);
   color: var(--plum-dark);
   border: 1px solid var(--rose-soft);
-  padding: 4px 12px;
-  border-radius: var(--radius-full);
+  padding: 4px 10px;
+  border-radius: var(--radius-xs);
   font-size: 0.76rem;
   font-weight: 600;
   letter-spacing: 0.04em;

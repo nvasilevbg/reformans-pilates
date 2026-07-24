@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import Logo from "@/components/Logo";
 
 const LINKS = [
   { href: "/rezervacii", label: "График" },
@@ -19,6 +20,7 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
 
   const isHome = path === "/";
+  const isTransparent = isHome && !scrolled;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,9 +56,12 @@ export default function Nav() {
       data-scrolled={scrolled}
     >
       <div className="shell nav-inner">
-        <Link href="/" className="brand" onClick={() => setOpen(false)}>
-          Реформанс <span>Лозенец</span>
-        </Link>
+        <div onClick={() => setOpen(false)}>
+          <Logo
+            color={isTransparent ? "#ffffff" : "var(--plum-dark)"}
+            subColor={isTransparent ? "rgba(255,255,255,0.8)" : "var(--ink-soft)"}
+          />
+        </div>
 
         <div className="nav-links" data-open={open}>
           {LINKS.map((l) => (
