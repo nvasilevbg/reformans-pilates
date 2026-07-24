@@ -1,0 +1,10 @@
+node_modules
+.next
+out
+.git
+.gitignore
+*.log
+README.md
+deploy
+.github
+.env*.local

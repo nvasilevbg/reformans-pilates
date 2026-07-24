@@ -1,0 +1,26 @@
+# Dev/staging deployment for the Coolify + Traefik box (srv1429337.hstgr.cloud).
+# Single Next.js service on the shared external "coolify" network; Traefik
+# (coolify-proxy) terminates TLS (Let's Encrypt) and routes the subdomain.
+# Copy .env.example -> .env and set DOMAIN before `docker compose up -d --build`.
+services:
+  app:
+    container_name: reformans-pilates
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+    networks: [coolify]
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.reformans-pilates.rule=Host(`${DOMAIN}`)
+      - traefik.http.routers.reformans-pilates.entrypoints=https
+      - traefik.http.routers.reformans-pilates.tls.certresolver=letsencrypt
+      - traefik.http.routers.reformans-pilates.service=reformans-pilates
+      - traefik.http.services.reformans-pilates.loadbalancer.server.port=3000
+
+networks:
+  coolify:
+    external: true
