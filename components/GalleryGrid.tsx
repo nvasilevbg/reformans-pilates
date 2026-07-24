@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import StudioImage from "./StudioImage";
-import { STUDIO_IMAGES, StudioImageKey } from "@/lib/images";
+import { StudioImageKey } from "@/lib/images";
 
 const GALLERY_KEYS: { key: StudioImageKey; caption: string; tall?: boolean }[] = [
   { key: "gallery1", caption: "Залата в 7:20, преди първия час", tall: true },
@@ -15,9 +16,15 @@ const GALLERY_KEYS: { key: StudioImageKey; caption: string; tall?: boolean }[] =
 
 export default function GalleryGrid() {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (activeIdx === null) return;
+    document.body.style.overflow = "hidden";
 
     function handleKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") {
@@ -30,7 +37,10 @@ export default function GalleryGrid() {
     }
 
     document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, [activeIdx]);
 
   return (
@@ -58,61 +68,68 @@ export default function GalleryGrid() {
         ))}
       </div>
 
-      {/* Vanilla React Lightbox Dialog */}
-      {activeIdx !== null && (
-        <div
-          className="lightbox-overlay"
-          onClick={() => setActiveIdx(null)}
-          role="dialog"
-          aria-modal="true"
-          aria-label="Преглед на снимка"
-        >
-          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-            <button
-              className="lightbox-close"
-              onClick={() => setActiveIdx(null)}
-              aria-label="Затвори"
-              title="Затвори (Esc)"
-            >
-              ✕
-            </button>
+      {/* Lightbox Dialog Teleported to Document Body */}
+      {mounted &&
+        activeIdx !== null &&
+        createPortal(
+          <div
+            className="lightbox-overlay"
+            onClick={() => setActiveIdx(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Преглед на снимка"
+          >
+            <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+              <button
+                className="lightbox-close"
+                onClick={() => setActiveIdx(null)}
+                aria-label="Затвори"
+                title="Затвори (Esc)"
+              >
+                ✕
+              </button>
 
-            <button
-              className="lightbox-nav lightbox-prev"
-              onClick={() => setActiveIdx((prev) => (prev !== null ? (prev - 1 + GALLERY_KEYS.length) % GALLERY_KEYS.length : 0))}
-              aria-label="Предишна снимка"
-              title="Предишна снимка (←)"
-            >
-              ‹
-            </button>
+              <button
+                className="lightbox-nav lightbox-prev"
+                onClick={() =>
+                  setActiveIdx((prev) => (prev !== null ? (prev - 1 + GALLERY_KEYS.length) % GALLERY_KEYS.length : 0))
+                }
+                aria-label="Предишна снимка"
+                title="Предишна снимка (←)"
+              >
+                ‹
+              </button>
 
-            <div className="lightbox-image-holder">
-              <StudioImage
-                imageKey={GALLERY_KEYS[activeIdx].key}
-                alt={GALLERY_KEYS[activeIdx].caption}
-                priority
-                sizes="90vw"
-                style={{ maxHeight: "75vh", borderRadius: "var(--radius-lg)" }}
-              />
-              <div className="lightbox-info">
-                <span className="lightbox-counter">
-                  {activeIdx + 1} от {GALLERY_KEYS.length}
-                </span>
-                <span className="lightbox-title">{GALLERY_KEYS[activeIdx].caption}</span>
+              <div className="lightbox-image-holder">
+                <StudioImage
+                  imageKey={GALLERY_KEYS[activeIdx].key}
+                  alt={GALLERY_KEYS[activeIdx].caption}
+                  priority
+                  sizes="90vw"
+                  style={{ maxHeight: "75vh", borderRadius: "var(--radius-lg)" }}
+                />
+                <div className="lightbox-info">
+                  <span className="lightbox-counter">
+                    {activeIdx + 1} от {GALLERY_KEYS.length}
+                  </span>
+                  <span className="lightbox-title">{GALLERY_KEYS[activeIdx].caption}</span>
+                </div>
               </div>
-            </div>
 
-            <button
-              className="lightbox-nav lightbox-next"
-              onClick={() => setActiveIdx((prev) => (prev !== null ? (prev + 1) % GALLERY_KEYS.length : 0))}
-              aria-label="Следваща снимка"
-              title="Следваща снимка (→)"
-            >
-              ›
-            </button>
-          </div>
-        </div>
-      )}
+              <button
+                className="lightbox-nav lightbox-next"
+                onClick={() =>
+                  setActiveIdx((prev) => (prev !== null ? (prev + 1) % GALLERY_KEYS.length : 0))
+                }
+                aria-label="Следваща снимка"
+                title="Следваща снимка (→)"
+              >
+                ›
+              </button>
+            </div>
+          </div>,
+          document.body
+        )}
 
       <style jsx>{`
         .gallery-masonry {
@@ -162,19 +179,25 @@ export default function GalleryGrid() {
           border-top: var(--edge);
         }
 
-        /* Lightbox CSS */
+        /* Viewport-Centered Lightbox CSS */
         .lightbox-overlay {
           position: fixed;
-          inset: 0;
-          background: rgba(46, 32, 41, 0.88);
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100vw;
+          height: 100vh;
+          height: 100dvh;
+          background: rgba(30, 18, 24, 0.88);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
           display: flex;
           align-items: center;
           justify-content: center;
-          z-index: 200;
+          z-index: 99999;
           padding: 1.5rem;
-          animation: fadeIn 0.25s ease-out;
+          animation: fadeIn 0.2s ease-out;
         }
 
         .lightbox-content {
@@ -201,7 +224,7 @@ export default function GalleryGrid() {
           font-size: 0.92rem;
           background: rgba(0, 0, 0, 0.4);
           padding: 0.6rem 1.25rem;
-          border-radius: var(--radius-full);
+          border-radius: var(--radius-sm);
           backdrop-filter: blur(8px);
         }
 
@@ -220,7 +243,7 @@ export default function GalleryGrid() {
           border: none;
           width: 38px;
           height: 38px;
-          border-radius: var(--radius-full);
+          border-radius: var(--radius-sm);
           font-size: 1.1rem;
           cursor: pointer;
           display: flex;
@@ -243,7 +266,7 @@ export default function GalleryGrid() {
           border: none;
           width: 46px;
           height: 46px;
-          border-radius: var(--radius-full);
+          border-radius: var(--radius-sm);
           font-size: 1.8rem;
           line-height: 1;
           cursor: pointer;
