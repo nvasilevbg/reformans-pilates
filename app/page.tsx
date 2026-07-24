@@ -1,5 +1,6 @@
 import Link from "next/link";
 import StudioImage from "@/components/StudioImage";
+import FAQSection from "@/components/FAQSection";
 import { STUDIO_IMAGES } from "@/lib/images";
 import "./home.css";
 
@@ -10,7 +11,7 @@ export default function Home() {
     <>
       {/* Full-Screen Background Photo Hero (100svh) */}
       <section className="hero-fullscreen">
-        {/* Full-bleed Photo Layer (Shifted 68% X to position instructor on right) */}
+        {/* Full-bleed Photo Layer */}
         <div className="hero-bg">
           <img
             src={heroImage.src}
@@ -20,7 +21,7 @@ export default function Home() {
           />
         </div>
 
-        {/* Directional Scrim Overlays (Solid Bottom-Left for Text, Luminous Top-Right for Studio) */}
+        {/* Directional Scrim Overlays */}
         <div className="hero-scrim-top" />
         <div className="hero-scrim-directional" />
 
@@ -29,12 +30,12 @@ export default function Home() {
           <div className="animate-entrance hero-text-wrapper">
             <p className="hero-eyebrow">Лозенец · София</p>
             <h1 className="hero-title">
-              Шест реформъра. <br className="desktop-break" />
-              <em className="hero-accent">Нито един</em> излишен.
+              Освободи гърба от напрежението. <br className="desktop-break" />
+              <em className="hero-accent">Изправи стойката си.</em>
             </h1>
             <p className="hero-lede">
-              Работим с групи до шест души, за да може кинезитерапевтът да
-              следи прецизно всяко ваше движение и детайл от стойката.
+              Шест реформъра. Индивидуална грижа от кинезитерапевт във всяко движение.
+              Работим с групи до 6 души, за да тренираш безопасно и с гарантиран резултат.
             </p>
             <div className="hero-actions">
               <a
@@ -43,10 +44,10 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="btn btn-primary"
               >
-                Запази час в Fitsys
+                Запази час за тази седмица
               </a>
-              <Link href="/za-nas" className="btn btn-ghost-hero">
-                За студиото
+              <Link href="/ceni" className="btn btn-ghost-hero">
+                Виж цените и картите
               </Link>
             </div>
           </div>
@@ -58,8 +59,51 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pillars Section */}
+      {/* Trust & Beginner Guarantee Callout Banner */}
+      <section className="shell" style={{ marginTop: "var(--space-8)" }}>
+        <div
+          className="card animate-entrance"
+          style={{
+            background: "var(--surface-raised)",
+            border: "1px solid var(--rose-soft)",
+            padding: "var(--space-6) var(--space-8)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "var(--space-6)",
+            flexWrap: "wrap",
+          }}
+        >
+          <div style={{ maxWidth: "68ch" }}>
+            <span className="eyebrow" style={{ color: "var(--plum-dark)" }}>
+              ✨ 100% Подходящо за начинаещи
+            </span>
+            <h3 style={{ margin: "var(--space-1) 0 var(--space-2)", fontSize: "1.25rem" }}>
+              Никога не си тренирал/а на пилатес реформър?
+            </h3>
+            <p style={{ margin: 0, color: "var(--ink-soft)", fontSize: "0.95rem" }}>
+              Над 80% от новите ни клиенти започват от нулата. Първата ти сесия е с меко темпо,
+              с пълна персонална настройка на уреда и внимателно водене стъпка по стъпка.
+            </p>
+          </div>
+          <a
+            href="https://www.fitsys.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary"
+          >
+            Пробвай първи час в Fitsys
+          </a>
+        </div>
+      </section>
+
+      {/* 3 Core Benefits Section */}
       <section className="section shell">
+        <div style={{ textAlign: "center", marginBottom: "var(--space-10)" }}>
+          <p className="eyebrow">Защо Реформанс</p>
+          <h2>Три причини да избереш тренировка на реформър при нас</h2>
+        </div>
+
         <div className="pillars">
           <div className="animate-entrance" style={{ animationDelay: "0.1s" }}>
             <StudioImage
@@ -67,37 +111,39 @@ export default function Home() {
               aspectRatio="16/10"
               style={{ borderRadius: "var(--radius-md)", marginBottom: "var(--space-4)" }}
             />
-            <p className="eyebrow">Групови часове</p>
-            <h3>Максимум 6 души</h3>
+            <p className="eyebrow">1. Облекчение & Стойка</p>
+            <h3>Забрави за болките в кръста</h3>
             <p>
-              Петдесет минути на уред реформър под непрекъснатото внимание на
-              инструктора. Нивата са предварително обозначени, за да изберете най-подходящия час.
+              Специализирани упражнения с пружинно съпротивление, които облекчават притискането
+              на гръбначния стълб и укрепват дълбоките коремни мускули.
             </p>
           </div>
+
           <div className="animate-entrance" style={{ animationDelay: "0.2s" }}>
             <StudioImage
               imageKey="pillarPrivate"
               aspectRatio="16/10"
               style={{ borderRadius: "var(--radius-md)", marginBottom: "var(--space-4)" }}
             />
-            <p className="eyebrow">Индивидуално</p>
-            <h3>Персонален подход</h3>
+            <p className="eyebrow">2. Персонален контрол</p>
+            <h3>Гарантирано внимание (до 6 души)</h3>
             <p>
-              Подходящо при старт след прекъсване, възстановяване след раждане или травма.
-              Първата сесия включва пълна оценка на стойката и движението.
+              Инструкторът е до теб през целите 50 минути. Коригира стойката ти в реално време,
+              за да тренираш безопасно и с пълна ефективност.
             </p>
           </div>
+
           <div className="animate-entrance" style={{ animationDelay: "0.3s" }}>
             <StudioImage
               imageKey="pillarRehab"
               aspectRatio="16/10"
               style={{ borderRadius: "var(--radius-md)", marginBottom: "var(--space-4)" }}
             />
-            <p className="eyebrow">Рехабилитация</p>
-            <h3>С медицинска насоченост</h3>
+            <p className="eyebrow">3. Кинезитерапия</p>
+            <h3>Резултати без риск от травми</h3>
             <p>
-              Инструкторите ни притежават кинезитерапевтично образование. Работим и по
-              конкретни препоръки от ортопеди, невролози и физиотерапевти.
+              Инструкторите ни са с магистърска степен по кинезитерапия. Изграждаме стягане,
+              гъвкавост и тонус без агресивно натоварване на ставите.
             </p>
           </div>
         </div>
@@ -108,7 +154,7 @@ export default function Home() {
         <div className="home-studio-grid animate-entrance">
           <div>
             <p className="eyebrow">За залата в Лозенец</p>
-            <h2>Студио, създадено за точност, атмосфера и внимание</h2>
+            <h2>Студио, създадено за спокойствие и прецизност</h2>
             <p style={{ color: "var(--ink-soft)", marginTop: "var(--space-3)" }}>
               Отворихме врати на ул. „Кричим“ 42 с една основна цел: да предложим уютно пространство,
               в което всеки трениращ получава прецизна настройка на уреда, корекция на стойката
@@ -142,7 +188,7 @@ export default function Home() {
       <section className="quote-band">
         <div className="shell">
           <blockquote>
-            „Дойдох заради болки в кръста. Останах, защото за първи път някой ми обясни
+            „Дойдох заради болки в кръста от седящата си работа. Останах, защото за първи път някой ми обясни
             механизма на всяко движение, вместо просто да ми брои повторения.“
           </blockquote>
           <cite>Радостина, клиент от 2023 г.</cite>
@@ -207,14 +253,26 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Conversion FAQ Accordion Section */}
+      <section className="section shell">
+        <div style={{ textAlign: "center", marginBottom: "var(--space-6)" }}>
+          <p className="eyebrow">Често задавани въпроси</p>
+          <h2>Всичко, което искаш да знаеш преди първия си час</h2>
+          <p style={{ color: "var(--ink-soft)", maxWidth: "56ch", margin: "var(--space-2) auto 0" }}>
+            Имаш притеснения или въпроси? Ето кратки и ясни отговори за нашите часове.
+          </p>
+        </div>
+
+        <FAQSection />
+      </section>
+
       {/* CTA Block */}
       <section className="section shell">
         <div className="cta-block animate-entrance">
           <div>
-            <h2>Графикът се обновява всяка неделя вечер</h2>
+            <h2>Готов/а ли си за първия си час?</h2>
             <p style={{ color: "var(--ink-soft)", maxWidth: "48ch", marginTop: "var(--space-2)" }}>
-              За две седмици напред — групови и индивидуални часове. Свободните места се
-              виждат в реално време, с бързо онлайн запазване.
+              Местата в залата са ограничени до 6 уреда в час. Графикът за следващите две седмици е активен в Fitsys.
             </p>
           </div>
           <a
@@ -223,7 +281,7 @@ export default function Home() {
             rel="noopener noreferrer"
             className="btn btn-primary"
           >
-            Запази час в Fitsys
+            Запази час за тази седмица
           </a>
         </div>
       </section>

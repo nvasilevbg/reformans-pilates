@@ -8,25 +8,30 @@ const CARDS = [
     price: "45 лв",
     unit: "за един групов час",
     lines: ["Валидно за всеки групов час", "Без обвързващи договори", "Плащане на място или онлайн"],
+    cta: "Пробвай 1 час",
   },
   {
     name: "Карта 8 посещения",
     price: "320 лв",
     unit: "40 лв / час",
-    lines: ["Валидност 2 месеца", "Възможност за еднократно прехвърляне", "Замразяване до 14 дни при пътуване"],
+    lines: ["Валидност 2 месеца", "Възможност за прехвърляне веднъж", "Замразяване до 14 дни при пътуване"],
     featured: true,
+    badge: "🔥 НАЙ-ПРЕДПОЧИТАНА ЗА СТАРТ",
+    cta: "Запази Карта 8 в Fitsys",
   },
   {
     name: "Карта 12 посещения",
     price: "432 лв",
     unit: "36 лв / час",
     lines: ["Валидност 3 месеца", "Приоритетно записване в часовете", "Замразяване до 21 дни при нужда"],
+    cta: "Купи Карта 12",
   },
   {
     name: "Индивидуална сесия",
     price: "90 лв",
     unit: "50 минути персонален час",
     lines: ["Пакет от 5 сесии: 410 лв", "Включва първоначална оценка на стойката", "Персонална програма за рехабилитация"],
+    cta: "Запази персонален час",
   },
 ];
 
@@ -35,10 +40,10 @@ export default function Ceni() {
     <div className="shell page-container animate-entrance">
       <header className="page-head">
         <p className="eyebrow">Цени и карти</p>
-        <h2>Прозрачни цени без скрити такси или обвързващи договори</h2>
+        <h2>Прозрачни цени без такси членство или годишни договори</h2>
         <p>
-          Заплащате единични посещения или пакетни карти. При планирано пътуване или
-          неразположение предлагаме възможност за удължаване валидността на картите — просто ни пишете.
+          Заплащате единични посещения или пакетни карти. Всички карти включват
+          гаранция за замразяване при пътуване или неразположение — без да губите тренировки.
         </p>
       </header>
 
@@ -62,74 +67,94 @@ export default function Ceni() {
                     border: "2px solid var(--rose-soft)",
                     boxShadow: "var(--shadow-md)",
                     position: "relative",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
                   }
-                : undefined
+                : {
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                  }
             }
           >
-            {c.featured && (
-              <span
+            <div>
+              {c.badge && (
+                <span
+                  style={{
+                    position: "absolute",
+                    top: "-12px",
+                    right: "var(--space-4)",
+                    background: "var(--rose-baby)",
+                    color: "var(--plum-dark)",
+                    fontSize: "0.7rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    padding: "var(--space-1) var(--space-3)",
+                    borderRadius: "var(--radius-full)",
+                    border: "1px solid var(--rose-soft)",
+                    boxShadow: "var(--shadow-sm)",
+                  }}
+                >
+                  {c.badge}
+                </span>
+              )}
+              <p className="eyebrow" style={{ color: c.featured ? "var(--plum-dark)" : undefined }}>
+                {c.name}
+              </p>
+              <div
                 style={{
-                  position: "absolute",
-                  top: "-12px",
-                  right: "var(--space-4)",
-                  background: "var(--rose-baby)",
+                  fontFamily: "var(--f-display)",
+                  fontSize: "2.4rem",
+                  lineHeight: 0.98,
+                  letterSpacing: "-0.03em",
+                  marginTop: "var(--space-2)",
+                  marginBottom: "var(--space-1)",
                   color: "var(--plum-dark)",
-                  fontSize: "0.72rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  padding: "var(--space-1) var(--space-3)",
-                  borderRadius: "var(--radius-full)",
-                  border: "1px solid var(--rose-soft)",
-                  boxShadow: "var(--shadow-sm)",
                 }}
               >
-                Най-популярен
-              </span>
-            )}
-            <p className="eyebrow" style={{ color: c.featured ? "var(--plum-dark)" : undefined }}>
-              {c.name}
-            </p>
-            <div
-              style={{
-                fontFamily: "var(--f-display)",
-                fontSize: "2.4rem",
-                lineHeight: 0.98,
-                letterSpacing: "-0.03em",
-                marginTop: "var(--space-2)",
-                marginBottom: "var(--space-1)",
-                color: "var(--plum-dark)",
-              }}
-            >
-              {c.price}
+                {c.price}
+              </div>
+              <div
+                style={{
+                  fontSize: "0.84rem",
+                  color: "var(--ink-soft)",
+                  marginBottom: "var(--space-4)",
+                }}
+              >
+                {c.unit}
+              </div>
+              <ul
+                style={{
+                  listStyle: "none",
+                  padding: 0,
+                  margin: 0,
+                  display: "grid",
+                  gap: "var(--space-2)",
+                  fontSize: "0.9rem",
+                  color: "var(--ink)",
+                  marginBottom: "var(--space-6)",
+                }}
+              >
+                {c.lines.map((l) => (
+                  <li key={l} style={{ paddingLeft: "var(--space-3)", position: "relative" }}>
+                    <span style={{ position: "absolute", left: 0, color: "var(--rose-soft)", fontWeight: "bold" }}>✓</span>
+                    {l}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div
-              style={{
-                fontSize: "0.84rem",
-                color: "var(--ink-soft)",
-                marginBottom: "var(--space-4)",
-              }}
+
+            <a
+              href="https://www.fitsys.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`btn ${c.featured ? "btn-primary" : "btn-ghost"}`}
+              style={{ width: "100%", textAlign: "center", justifyContent: "center" }}
             >
-              {c.unit}
-            </div>
-            <ul
-              style={{
-                listStyle: "none",
-                padding: 0,
-                margin: 0,
-                display: "grid",
-                gap: "var(--space-2)",
-                fontSize: "0.9rem",
-                color: "var(--ink)",
-              }}
-            >
-              {c.lines.map((l) => (
-                <li key={l} style={{ paddingLeft: "var(--space-3)", position: "relative" }}>
-                  <span style={{ position: "absolute", left: 0, color: "var(--rose-soft)", fontWeight: "bold" }}>✓</span>
-                  {l}
-                </li>
-              ))}
-            </ul>
+              {c.cta}
+            </a>
           </div>
         ))}
       </div>
@@ -148,8 +173,8 @@ export default function Ceni() {
           <div>
             <h3>Отказване на запазен час</h3>
             <p>
-              Отказването на запазен час е безплатно до 12 часа преди началния му час.
-              При по-късен отказ посещението се отчита като използвано, тъй като мястото в групата не може да бъде препредоставено навреме.
+              Отказването на запазен час е 100% безплатно до 12 часа преди началния му час през системата Fitsys.
+              При по-късен отказ посещението се отчита като използвано, тъй като мястото в групата от 6 уреда не може да бъде препредоставено навреме.
             </p>
           </div>
           <div>
@@ -170,14 +195,14 @@ export default function Ceni() {
         </div>
       </section>
 
-      <div style={{ paddingBottom: "var(--space-8)" }}>
+      <div style={{ paddingBottom: "var(--space-8)", textAlign: "center" }}>
         <a
           href="https://www.fitsys.com/"
           target="_blank"
           rel="noopener noreferrer"
           className="btn btn-primary"
         >
-          Запази час в Fitsys
+          Запази час за тази седмица в Fitsys
         </a>
       </div>
     </div>
