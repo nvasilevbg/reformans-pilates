@@ -82,13 +82,14 @@ export default function BookingSystem() {
       </div>
 
       {/* Date Picker Bar */}
-      <div className="bk-dates" role="tablist" aria-label="Избор на ден">
+      <div className="bk-daystrip" role="tablist" aria-label="Избор на ден">
         {days.map(({ date, items }) => {
           const [y, m, d] = date.split("-").map(Number);
           const dateObj = new Date(y, m - 1, d);
           const dow = WEEKDAYS[dateObj.getDay()];
           const isSelected = date === selectedDate;
           const totalFree = items.reduce((acc, s) => acc + freeSeats(s), 0);
+          const loadLevel = totalFree > 5 ? "high" : totalFree > 0 ? "medium" : "none";
 
           return (
             <button
@@ -96,39 +97,50 @@ export default function BookingSystem() {
               type="button"
               role="tab"
               aria-selected={isSelected}
-              className={`bk-date-btn ${isSelected ? "is-selected" : ""}`}
+              data-selected={isSelected}
+              className="bk-day"
               onClick={() => setSelectedDate(date)}
             >
-              <span className="bk-dow">{dow}</span>
-              <span className="bk-day">{d}</span>
-              <span className="bk-month">{MONTHS[m - 1]}</span>
-              <span className="bk-count">
-                {totalFree > 0 ? `${totalFree} свободни` : "Пълни часове"}
-              </span>
+              <span className="bk-day-dow">{dow}</span>
+              <div className="bk-day-num">{d}</div>
+              <div className="bk-day-free">
+                <span className="bk-day-dot" data-level={loadLevel} />
+                {totalFree > 0 ? `${totalFree} св.` : "Пълен"}
+              </div>
             </button>
           );
         })}
       </div>
 
-      {/* Filter Toolbar */}
-      <div className="bk-toolbar">
-        <div className="bk-active-day">
+      {/* Filter Toolbar & Active Day Label */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexWrap: "wrap",
+          gap: "var(--space-4)",
+          margin: "var(--space-4) 0 var(--space-6)",
+        }}
+      >
+        <div style={{ fontSize: "1.1rem", fontWeight: 600, color: "var(--plum-dark)" }}>
           {selectedDate && formatDayLabel(selectedDate)}
         </div>
 
-        <div className="bk-filters">
+        <div className="bk-filters" style={{ margin: 0, border: "none", padding: 0 }}>
           {(
             [
               ["all", "Всички часове"],
-              ["group", "Групови"],
-              ["private", "Индивидуални"],
+              ["group", "Групови (6 уреда)"],
+              ["private", "Индивидуални (1:1)"],
               ["free", "Само със свободни"],
             ] as const
           ).map(([fKey, label]) => (
             <button
               key={fKey}
               type="button"
-              className={`bk-chip ${filter === fKey ? "is-active" : ""}`}
+              className="bk-chip"
+              data-on={filter === fKey}
               onClick={() => setFilter(fKey)}
             >
               {label}
@@ -140,33 +152,35 @@ export default function BookingSystem() {
       {/* Slots List */}
       {activeDaySlots.length === 0 ? (
         <div className="bk-empty card">
-          <p>Няма намерени часове за избраните филтри.</p>
+          <p>Няма намерени часове за избрания ден и филтри.</p>
         </div>
       ) : (
-        <div className="bk-slots">
+        <div className="bk-list">
           {activeDaySlots.map((s) => {
             const free = freeSeats(s);
+            const status = free === 0 ? "full" : free === 1 ? "last" : "available";
 
             return (
-              <div key={s.id} className="bk-slot card">
+              <div key={s.id} className="bk-slot" data-status={status} data-full={free === 0}>
                 <div className="bk-time">
-                  <span className="bk-start">{s.start}</span>
-                  <span className="bk-end">{s.end}</span>
+                  {s.start}
+                  <small>до {s.end}</small>
                 </div>
 
                 <div className="bk-info">
-                  <div className="bk-title-row">
-                    <h3>{s.title}</h3>
-                    <span className="bk-badge" data-level={s.level}>
-                      {s.level}
-                    </span>
+                  <div className="bk-title">
+                    <span>{s.title}</span>
+                    <span className="bk-tag">{s.level}</span>
+                    {free === 1 && <span className="bk-alert-badge">Последно място!</span>}
                   </div>
 
                   <p className="bk-meta">
                     Инструктор: <strong>{s.instructor}</strong> · 50 минути
                   </p>
+                </div>
 
-                  <div className="bk-grid-visual" aria-label={`Места: ${s.booked} от ${s.capacity} заети`}>
+                <div className="bk-spring">
+                  <div className="bk-spring-track" aria-label={`Места: ${s.booked} от ${s.capacity} заети`}>
                     {Array.from({ length: s.capacity }).map((_, i) => {
                       const isBooked = i < s.booked;
                       const isLastSeat = !isBooked && free === 1;
@@ -174,8 +188,9 @@ export default function BookingSystem() {
                       return (
                         <span
                           key={i}
-                          className="bk-seat"
-                          data-status={isBooked ? "booked" : isLastSeat ? "last" : "free"}
+                          className="bk-coil"
+                          data-taken={isBooked}
+                          data-last-open={isLastSeat}
                           title={
                             isBooked
                               ? `Реформър #${i + 1}: Зает`
@@ -198,7 +213,7 @@ export default function BookingSystem() {
                       <b>Пълен клас</b>
                     ) : (
                       <>
-                        <b>{free}</b> от {s.capacity} свободни реформъра
+                        <b>{free}</b> от {s.capacity} свободни уреда
                       </>
                     )}
                   </div>
