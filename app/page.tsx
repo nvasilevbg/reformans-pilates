@@ -32,12 +32,12 @@ export default function Home() {
           <div className="animate-entrance hero-text-wrapper">
             <p className="hero-eyebrow">Лозенец · София</p>
             <h1 className="hero-title">
-              Освободи гърба от напрежението. <br className="desktop-break" />
-              <em className="hero-accent">Изправи стойката си.</em>
+              Изваяно, стегнато тяло. <br className="desktop-break" />
+              <em className="hero-accent">Без излишно напрежение.</em>
             </h1>
             <p className="hero-lede">
-              Шест реформъра. Индивидуална грижа от кинезитерапевт във всяко движение.
-              Работим с групи до 6 души, за да тренираш безопасно и с гарантиран резултат.
+              Дълги, изваяни мускули, стегнат корем и елегантна стойка.
+              Тренирай в малки групи до 6 души на реформър с кинезитерапевт за бързи и видими резултати.
             </p>
             <div className="hero-actions">
               <a
