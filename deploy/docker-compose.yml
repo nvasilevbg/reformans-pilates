@@ -2,6 +2,11 @@
 # Single Next.js service on the shared external "coolify" network; Traefik
 # (coolify-proxy) terminates TLS (Let's Encrypt) and routes the subdomain.
 # Copy .env.example -> .env and set DOMAIN before `docker compose up -d --build`.
+#
+# Unique project name so this stack never collides with other projects on the
+# box (e.g. lion, which also lives in a deploy/ dir). Do NOT rename blindly.
+name: reformans-pilates
+
 services:
   app:
     container_name: reformans-pilates
