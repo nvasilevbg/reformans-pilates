@@ -570,3 +570,59 @@ p {
     transform: none !important;
   }
 }
+
+/* ---------- Mobile Sticky CTA Bar ---------- */
+.mobile-sticky-cta {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-sticky-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 990;
+    background: rgba(250, 246, 245, 0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: var(--edge-strong);
+    padding: var(--space-3) var(--space-4);
+    padding-bottom: max(var(--space-3), env(safe-area-inset-bottom));
+    box-shadow: 0 -4px 16px rgba(42, 29, 36, 0.08);
+  }
+
+  .mobile-sticky-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  .mobile-sticky-title {
+    font-family: var(--f-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--plum-dark);
+  }
+
+  .mobile-sticky-sub {
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+
+  .mobile-sticky-btn {
+    padding: var(--space-2) var(--space-5);
+    font-size: 0.88rem;
+    white-space: nowrap;
+    box-shadow: var(--shadow-md);
+  }
+
+  body {
+    padding-bottom: 72px;
+  }
+}
