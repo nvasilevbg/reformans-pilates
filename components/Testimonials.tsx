@@ -28,10 +28,10 @@ const TESTIMONIALS = [
 export default function Testimonials() {
   return (
     <section className="section shell">
-      <div style={{ textAlign: "left", marginBottom: "var(--space-8)" }}>
+      <div className="section-head">
         <p className="eyebrow">Отзиви от залата</p>
         <h2>Истории на наши клиенти</h2>
-        <p style={{ color: "var(--ink-soft)", maxWidth: "56ch", margin: "var(--space-2) 0 0" }}>
+        <p>
           Хора със седящи професии, спортисти и майки, които откриха прецизното движение на реформър.
         </p>
       </div>

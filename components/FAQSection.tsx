@@ -34,7 +34,7 @@ export default function FAQSection() {
   };
 
   return (
-    <div className="faq-wrapper" style={{ marginTop: "var(--space-8)" }}>
+    <div className="faq-wrapper">
       {FAQS.map((faq, i) => {
         const isOpen = openIndex === i;
         return (
