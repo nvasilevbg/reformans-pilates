@@ -110,9 +110,14 @@ export default function ZaNas() {
       </section>
 
       <div style={{ paddingBottom: "var(--space-8)" }}>
-        <Link href="/rezervacii" className="btn btn-primary">
-          Запазете своя час
-        </Link>
+        <a
+          href="https://www.fitsys.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary"
+        >
+          Запазете час в Fitsys
+        </a>
       </div>
     </div>
   );

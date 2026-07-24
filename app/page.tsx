@@ -37,9 +37,14 @@ export default function Home() {
               следи прецизно всяко ваше движение и детайл от стойката.
             </p>
             <div className="hero-actions">
-              <Link href="/rezervacii" className="btn btn-primary">
-                Виж свободните часове
-              </Link>
+              <a
+                href="https://www.fitsys.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+              >
+                Запази час в Fitsys
+              </a>
               <Link href="/za-nas" className="btn btn-ghost-hero">
                 За студиото
               </Link>
@@ -212,9 +217,14 @@ export default function Home() {
               виждат в реално време, с бързо онлайн запазване.
             </p>
           </div>
-          <Link href="/rezervacii" className="btn btn-primary">
-            Запази час
-          </Link>
+          <a
+            href="https://www.fitsys.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary"
+          >
+            Запази час в Fitsys
+          </a>
         </div>
       </section>
     </>

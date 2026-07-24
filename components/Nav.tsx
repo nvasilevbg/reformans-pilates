@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 const LINKS = [
-  { href: "/rezervacii", label: "Резервации" },
+  { href: "/rezervacii", label: "График" },
   { href: "/ceni", label: "Цени" },
   { href: "/instruktori", label: "Инструктори" },
   { href: "/galeriya", label: "Галерия" },
@@ -71,9 +71,14 @@ export default function Nav() {
           ))}
         </div>
 
-        <Link href="/rezervacii" className="btn btn-primary nav-cta">
+        <a
+          href="https://www.fitsys.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary nav-cta"
+        >
           Запази час
-        </Link>
+        </a>
 
         <button
           className="nav-toggle"

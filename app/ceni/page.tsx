@@ -171,9 +171,14 @@ export default function Ceni() {
       </section>
 
       <div style={{ paddingBottom: "var(--space-8)" }}>
-        <Link href="/rezervacii" className="btn btn-primary">
-          Виж графика и свободните часове
-        </Link>
+        <a
+          href="https://www.fitsys.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary"
+        >
+          Запази час в Fitsys
+        </a>
       </div>
     </div>
   );
