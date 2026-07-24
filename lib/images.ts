@@ -39,6 +39,29 @@ export const STUDIO_IMAGES = {
     aspectRatio: "16/10",
   },
 
+  // Testimonials Portraits
+  testimonialRadostina: {
+    src: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80&auto=format",
+    alt: "Портрет на Радостина Стоянова — клиент",
+    width: 400,
+    height: 400,
+    aspectRatio: "1/1",
+  },
+  testimonialElena: {
+    src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80&auto=format",
+    alt: "Портрет на Елена Петрова — клиент",
+    width: 400,
+    height: 400,
+    aspectRatio: "1/1",
+  },
+  testimonialViktor: {
+    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format",
+    alt: "Портрет на Виктор Маринов — клиент",
+    width: 400,
+    height: 400,
+    aspectRatio: "1/1",
+  },
+
   // Team Instructors
   instructorMira: {
     src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&auto=format",

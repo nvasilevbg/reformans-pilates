@@ -49,7 +49,7 @@ export default function BookingSystem() {
 
   return (
     <div className="bk-wrapper">
-      {/* Banner directing to Fitsys */}
+      {/* Banner directing to online booking */}
       <div
         className="card"
         style={{
@@ -65,10 +65,10 @@ export default function BookingSystem() {
       >
         <div>
           <span className="eyebrow" style={{ color: "var(--plum-dark)" }}>
-            Онлайн резервационна система Fitsys
+            Онлайн резервационна система
           </span>
           <p style={{ margin: "var(--space-1) 0 0", color: "var(--ink-soft)", fontSize: "0.92rem" }}>
-            Графикът и онлайн записването се управляват директно през системата Fitsys.
+            Графикът и онлайн записването се виждат в реално време. Изберете удобен час по-долу.
           </p>
         </div>
         <a
@@ -77,7 +77,7 @@ export default function BookingSystem() {
           rel="noopener noreferrer"
           className="btn btn-primary"
         >
-          Отвори Fitsys
+          Отвори графика
         </a>
       </div>
 
@@ -212,7 +212,7 @@ export default function BookingSystem() {
                     className={`btn btn-primary ${free === 0 ? "btn-disabled" : ""}`}
                     style={free === 0 ? { pointerEvents: "none", opacity: 0.5 } : undefined}
                   >
-                    {free === 0 ? "Няма места" : "Запази в Fitsys"}
+                    {free === 0 ? "Няма места" : "Запази час"}
                   </a>
                 </div>
               </div>

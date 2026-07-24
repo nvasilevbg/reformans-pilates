@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CheckIcon } from "@/components/Icons";
 
 export const metadata = { title: "Цени — Пилатес Реформър" };
 
@@ -16,8 +17,8 @@ const CARDS = [
     unit: "40 лв / час",
     lines: ["Валидност 2 месеца", "Възможност за прехвърляне веднъж", "Замразяване до 14 дни при пътуване"],
     featured: true,
-    badge: "🔥 НАЙ-ПРЕДПОЧИТАНА ЗА СТАРТ",
-    cta: "Запази Карта 8 в Fitsys",
+    badge: "НАЙ-ПРЕДПОЧИТАНА ЗА СТАРТ",
+    cta: "Запази Карта 8",
   },
   {
     name: "Карта 12 посещения",
@@ -138,8 +139,10 @@ export default function Ceni() {
                 }}
               >
                 {c.lines.map((l) => (
-                  <li key={l} style={{ paddingLeft: "var(--space-3)", position: "relative" }}>
-                    <span style={{ position: "absolute", left: 0, color: "var(--rose-soft)", fontWeight: "bold" }}>✓</span>
+                  <li key={l} style={{ paddingLeft: "var(--space-6)", position: "relative" }}>
+                    <span style={{ position: "absolute", left: 0, top: "2px", color: "var(--rose-soft)" }}>
+                      <CheckIcon size={16} />
+                    </span>
                     {l}
                   </li>
                 ))}
@@ -173,7 +176,7 @@ export default function Ceni() {
           <div>
             <h3>Отказване на запазен час</h3>
             <p>
-              Отказването на запазен час е 100% безплатно до 12 часа преди началния му час през системата Fitsys.
+              Отказването на запазен час е 100% безплатно до 12 часа преди началния му час през онлайн графика.
               При по-късен отказ посещението се отчита като използвано, тъй като мястото в групата от 6 уреда не може да бъде препредоставено навреме.
             </p>
           </div>
@@ -202,7 +205,7 @@ export default function Ceni() {
           rel="noopener noreferrer"
           className="btn btn-primary"
         >
-          Запази час за тази седмица в Fitsys
+          Запази час за тази седмица
         </a>
       </div>
     </div>

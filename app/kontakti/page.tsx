@@ -100,10 +100,11 @@ export default function Kontakti() {
             }}
           >
             <iframe
-              title="Карта до студиото"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=23.3230%2C42.6710%2C23.3390%2C42.6790&layer=mapnik&marker=42.6750%2C23.3310"
+              title="Карта в Google Maps"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2933.245892185412!2d23.3284!3d42.6750!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa850785121b6d%3A0xd68d71239b027d14!2sul.%20%22Krichim%22%2042%2C%201407%20Sofia!5e0!3m2!1sen!2sbg!4v1700000000000!5m2!1sen!2sbg"
               style={{ width: "100%", height: "100%", border: 0 }}
               loading="lazy"
+              allowFullScreen
             />
           </div>
         </div>

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import StudioImage from "@/components/StudioImage";
 import FAQSection from "@/components/FAQSection";
+import Testimonials from "@/components/Testimonials";
+import { SparklesIcon } from "@/components/Icons";
 import { STUDIO_IMAGES } from "@/lib/images";
 import "./home.css";
 
@@ -75,8 +77,8 @@ export default function Home() {
           }}
         >
           <div style={{ maxWidth: "68ch" }}>
-            <span className="eyebrow" style={{ color: "var(--plum-dark)" }}>
-              ✨ 100% Подходящо за начинаещи
+            <span className="eyebrow" style={{ color: "var(--plum-dark)", display: "inline-flex", alignItems: "center", gap: "6px" }}>
+              <SparklesIcon size={15} color="var(--plum-dark)" /> 100% Подходящо за начинаещи
             </span>
             <h3 style={{ margin: "var(--space-1) 0 var(--space-2)", fontSize: "1.25rem" }}>
               Никога не си тренирал/а на пилатес реформър?
@@ -92,7 +94,7 @@ export default function Home() {
             rel="noopener noreferrer"
             className="btn btn-primary"
           >
-            Пробвай първи час в Fitsys
+            Пробвай първи час
           </a>
         </div>
       </section>
@@ -184,16 +186,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quote Band */}
-      <section className="quote-band">
-        <div className="shell">
-          <blockquote>
-            „Дойдох заради болки в кръста от седящата си работа. Останах, защото за първи път някой ми обясни
-            механизма на всяко движение, вместо просто да ми брои повторения.“
-          </blockquote>
-          <cite>Радостина, клиент от 2023 г.</cite>
-        </div>
-      </section>
+      {/* 3 Photo Testimonials Section */}
+      <Testimonials />
 
       {/* Team Preview Section */}
       <section className="section shell">
@@ -272,7 +266,7 @@ export default function Home() {
           <div>
             <h2>Готов/а ли си за първия си час?</h2>
             <p style={{ color: "var(--ink-soft)", maxWidth: "48ch", marginTop: "var(--space-2)" }}>
-              Местата в залата са ограничени до 6 уреда в час. Графикът за следващите две седмици е активен в Fitsys.
+              Местата в залата са ограничени до 6 уреда в час. Графикът за следващите две седмици е активен онлайн.
             </p>
           </div>
           <a
