@@ -18,30 +18,16 @@ export default function Kontakti() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.15fr)",
-          gap: "var(--space-8)",
+          gridTemplateColumns: "1fr 1.05fr",
+          gap: "var(--space-6)",
+          alignItems: "start",
           paddingBottom: "var(--space-12)",
         }}
         className="kontakti-grid"
       >
-        <div>
-          {/* Building entrance photo */}
-          <div className="card" style={{ marginBottom: "var(--space-4)", padding: "var(--space-4)" }}>
-            <p className="eyebrow" style={{ marginBottom: "var(--space-2)" }}>
-              Вход на сградата
-            </p>
-            <StudioImage
-              imageKey="contactBuilding"
-              aspectRatio="4/3"
-              sizes="(max-width: 860px) 100vw, 40vw"
-              style={{ borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-sm)" }}
-            />
-            <p style={{ fontSize: "0.85rem", color: "var(--ink-soft)", margin: "var(--space-2) 0 0" }}>
-              Влиза се през вратата към двора, партерен етаж отляво.
-            </p>
-          </div>
-
-          <div className="card" style={{ marginBottom: "var(--space-4)" }}>
+        {/* Left Column: Direct Info, Working Hours, & Entrance Photo */}
+        <div style={{ display: "grid", gap: "var(--space-4)" }}>
+          <div className="card">
             <p className="eyebrow">Директен контакт</p>
             <div style={{ display: "grid", gap: "var(--space-2)", marginTop: "var(--space-2)", fontSize: "1.02rem" }}>
               <a href="tel:+35928001420">02 800 1420</a>
@@ -53,7 +39,7 @@ export default function Kontakti() {
             </p>
           </div>
 
-          <div className="card" style={{ marginBottom: "var(--space-4)" }}>
+          <div className="card">
             <p className="eyebrow">Работно време</p>
             <table
               style={{
@@ -90,13 +76,32 @@ export default function Kontakti() {
             </p>
           </div>
 
+          {/* Building entrance photo card */}
+          <div className="card" style={{ padding: "var(--space-4)" }}>
+            <p className="eyebrow" style={{ marginBottom: "var(--space-2)" }}>
+              Вход на сградата
+            </p>
+            <StudioImage
+              imageKey="contactBuilding"
+              aspectRatio="16/9"
+              sizes="(max-width: 860px) 100vw, 40vw"
+              style={{ borderRadius: "var(--radius-md)", boxShadow: "var(--shadow-sm)" }}
+            />
+            <p style={{ fontSize: "0.85rem", color: "var(--ink-soft)", margin: "var(--space-2) 0 0" }}>
+              Влиза се през вратата към двора, партерен етаж отляво.
+            </p>
+          </div>
+        </div>
+
+        {/* Right Column: Google Maps opposite Working Hours + Contact Form */}
+        <div style={{ display: "grid", gap: "var(--space-4)" }}>
+          {/* Google Maps Card */}
           <div
+            className="card"
             style={{
-              borderRadius: "var(--radius-lg)",
+              padding: 0,
               overflow: "hidden",
-              border: "var(--edge)",
               height: "260px",
-              boxShadow: "var(--shadow-sm)",
             }}
           >
             <iframe
@@ -107,9 +112,9 @@ export default function Kontakti() {
               allowFullScreen
             />
           </div>
-        </div>
 
-        <ContactForm />
+          <ContactForm />
+        </div>
       </div>
 
       <style>{`
