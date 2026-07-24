@@ -101,7 +101,7 @@ export default function Home() {
 
       {/* 3 Core Benefits Section */}
       <section className="section shell">
-        <div style={{ textAlign: "center", marginBottom: "var(--space-10)" }}>
+        <div style={{ textAlign: "left", marginBottom: "var(--space-8)" }}>
           <p className="eyebrow">Защо Реформанс</p>
           <h2>Три причини да избереш тренировка на реформър при нас</h2>
         </div>
@@ -194,7 +194,7 @@ export default function Home() {
         <div style={{ textAlign: "left", marginBottom: "var(--space-8)" }}>
           <p className="eyebrow">Екип</p>
           <h2>Инструкторите в Реформанс</h2>
-          <p style={{ color: "var(--ink-soft)", maxWidth: "60ch" }}>
+          <p style={{ color: "var(--ink-soft)", maxWidth: "60ch", marginTop: "var(--space-2)" }}>
             Сертифицирани специалисти, които опознават спецификите на тялото ви и следят напредъка ви във всяко движение.
           </p>
         </div>
@@ -240,7 +240,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div style={{ marginTop: "var(--space-8)", textAlign: "center" }}>
+        <div style={{ marginTop: "var(--space-8)", textAlign: "left" }}>
           <Link href="/instruktori" className="btn btn-ghost">
             Виж целия екип и биографии
           </Link>
@@ -249,10 +249,10 @@ export default function Home() {
 
       {/* Conversion FAQ Accordion Section */}
       <section className="section shell">
-        <div style={{ textAlign: "center", marginBottom: "var(--space-6)" }}>
+        <div style={{ textAlign: "left", marginBottom: "var(--space-6)" }}>
           <p className="eyebrow">Често задавани въпроси</p>
           <h2>Всичко, което искаш да знаеш преди първия си час</h2>
-          <p style={{ color: "var(--ink-soft)", maxWidth: "56ch", margin: "var(--space-2) auto 0" }}>
+          <p style={{ color: "var(--ink-soft)", maxWidth: "56ch", margin: "var(--space-2) 0 0" }}>
             Имаш притеснения или въпроси? Ето кратки и ясни отговори за нашите часове.
           </p>
         </div>

@@ -198,7 +198,7 @@ export default function Ceni() {
         </div>
       </section>
 
-      <div style={{ paddingBottom: "var(--space-8)", textAlign: "center" }}>
+      <div style={{ paddingBottom: "var(--space-8)", textAlign: "left" }}>
         <a
           href="https://www.fitsys.com/"
           target="_blank"
